@@ -1,0 +1,5 @@
+git@github.com:seakers/daphne_brain.git
+git@github.com:seakers/VASSAR_server.git
+git@github.com:seakers/VASSAR_lib.git
+git@github.com:seaklab/SystemArchitectureProblems.git
+git@github.com:seakers/orekit.git
