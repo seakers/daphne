@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+  daphne:
+    build:
+      dockerfile: ./build/Dockerfile
+      context: .
+    image: daphne:test
+    volumes:
+      - type: bind
+        source: /home/gapaza/repositories/daphne/daphne/daphne
+        target: /app/daphne
+      - type: bind
+        source: /home/gapaza/repositories/daphne/daphne/build/scripts
+        target: /app/scripts
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    tty: true
+    container_name: daphne_server
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=daphne
+      - POSTGRES_PASSWORD=daphne
+      - POSTGRES_DB=daphne
+    container_name: daphne_database
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    container_name: daphne_redis
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "5671:5671"
+    hostname: "my-rabbitmq"
+    container_name: daphne_rabbitmq
