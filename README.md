@@ -1,14 +1,22 @@
 # Daphne
 This codebase contains everything needed to run Daphne locally on your machine using Docker
 
-### Installation
+### Dependencies
+
+ - Docker
+ - Docker Compose
+ - Windows / Mac / Linux
 
 
-If you are on a Unix based operating system (Mac / Linux), follow the <b>Unix Installation</b> instructions below.
+### Mac / Linux Installation
 
-If you are on a Windows machine, follow the <b>Windows Installation</b> instructions below.
+ 1. Open a terminal and navigate to the root directory of this project
+ 2. Run the command `bash ./build/unix_installer.sh`
 
-### Dependencies 
+
+### Windows Installation
+
+
 
 
 
