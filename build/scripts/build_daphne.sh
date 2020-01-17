@@ -10,6 +10,7 @@ DAPHNEBRAIN="/app/daphne/daphne_brain"
 COMMANDCLASSIFIER="/app/daphne/command_classifier"
 HISTORICALDB="/app/daphne/historical_db"
 
+
 # Check for daphne directory
 if [ -d "$DAPHNEDIR" ]; then
     echo "Daphne directory exists"
@@ -39,15 +40,67 @@ pip3 install -r ./command_classifier/requirements.txt
 pip3 install -r ./historical_db/requirements.txt
 python3 -m spacy download en
 supervisorctl start vassar
-cd historical_db || exit
-scrapy crawl ceosdb_scraper
-cd ../command_classifier || exit
-python3 question_generator.py
-python3 train.py
-cp -r ./models ../daphne_brain/dialogue
-cd ../daphne_brain || exit
-mkdir logs
-touch ./logs/daphne.log
+
+
+# If DNE: /app/daphne/daphne_brain/dialogue/models
+DAPHNEMODELSDIR="/app/daphne/daphne_brain/dialogue/models"
+if [ -d "$DAPHNEMODELSDIR" ]; then
+    echo "Daphne models directory exists, skipping question training"
+else
+    echo "Filling historical database"
+    cd historical_db || exit
+    scrapy crawl ceosdb_scraper
+    chmod +x /app/scripts/brain/update_command_models.sh
+    bash /app/scripts/brain/update_command_models.sh
+fi
+
+
+# If DNE: /app/daphne/daphne_brain/logs
+DAPHNELOGDIR="/app/daphne/daphne_brain/logs"
+cd /app/daphne/daphne_brain || exit
+if [ -d "$DAPHNELOGDIR" ]; then
+    echo "Daphne log directory exists"
+else
+    mkdir logs
+fi
+
+
+# If DNE: /app/daphne/daphne_brain/logs/daphne.log
+DAPHNELOGFILE="/app/daphne/daphne_brain/logs/daphne.log"
+cd /app/daphne/daphne_brain || exit
+if test -f "$DAPHNELOGFILE"; then
+    echo "Daphne logfile exists"
+else
+    touch ./logs/daphne.log
+fi
+
+
+# Run migrations
+cd /app/daphne/daphne_brain || exit
+supervisorctl start vassar
 python3 manage.py makemigrations
 python3 manage.py migrate
 supervisorctl stop vassar
+
+
+exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

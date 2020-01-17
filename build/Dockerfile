@@ -4,6 +4,12 @@ ENV USER=daphne
 ENV PASSWORD=daphne
 ENV DAPHNEVERSION=EOSS
 
+ENV VASSAR=127.0.0.1
+ENV DATAMINING=127.0.0.1
+ENV REDIS=redis
+ENV RABBITMQ=rabbitmq
+ENV POSTGRES=postgres
+
 # ---------- INSTALL TOOLS ----------
 WORKDIR /installs
 COPY ./build/tools/openjdk-12_linux-x64_bin.tar.gz /installs

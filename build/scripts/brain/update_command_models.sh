@@ -1,17 +1,13 @@
 #!/bin/bash
 
+# This only retrains the model
+# It does not run the historical database
+
 # ----------> Ensure correct directories exist
 if [ -d "/app/daphne/command_classifier" ]; then
     cd /app/daphne/command_classifier
 else
     echo "Path /app/daphne/command_classifier does not exist"
-    if [ -d "/app/daphne_build/command_classifier" ]; then
-        echo "Mount files to daphne directory first"
-        exit
-    else
-        echo "Path /app/daphne_build/command_classifier does not exist"
-        exit
-    fi
     exit
 fi
 
@@ -45,5 +41,9 @@ else
     mkdir /app/daphne/daphne_brain/dialogue/models
     cp -r ./models ../daphne_brain/dialogue/models
 fi
+
+
+# ----------> Stop vassar
+supervisorctl stop vassar
 
 exit

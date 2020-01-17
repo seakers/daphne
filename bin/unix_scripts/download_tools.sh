@@ -12,8 +12,8 @@ JDKMVPATH="${TOOLSDIR}/openjdk-12_linux-x64_bin.tar.gz"            # /daphne/bui
 
 
 # -----> Check if files exist
-if test -f "$JDKPATH"; then
-    echo "$JDKPATH exist"
+if test -f "$JDKMVPATH"; then
+    echo "$JDKMVPATH exist"
 else
     echo "Downloading JDK 12"
     cd ${TOOLSDIR}
