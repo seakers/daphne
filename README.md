@@ -35,7 +35,7 @@ Refer to the directory structure diagram below learn about the important Daphne 
 <br>
 
 ```bash
- .
+.
 |-- bin
 |-- build
 |-- daphne
