@@ -7,22 +7,22 @@ The purpose of this container is to aid in Daphne feature development.
 If you would like read about the purpose of Daphne, the `/refs` directory contains published papers detailing just that.
 
 
-### Dependencies
+## Dependencies
 
  - Docker
  - Docker Compose
  - Windows / Unix Based OS
  <br>
 
-### Installation
+## Installation
 
-#### Unix
+### Unix
 
  1. Navigate to the root directory of this repository
  2. Run <i>unix_installer</i> shell script with the command `bash ./bin/unix_installer.sh`
  3. Once the script has finished, open a web browser (firefox preferred) and navigate to `localhost:8080`  
 
-#### Windows
+### Windows
 
  - Coming soon
  
