@@ -1,2 +1,14 @@
 #!/bin/bash
 
+SCRIPT=$(readlink -f "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")              # /daphne/bin
+UNIXSCRIPTS="${SCRIPTPATH}/unix_scripts"     # /daphne/bin/unix_scripts
+
+ARGONE="${1}"
+ARGTWO="${2}"
+
+if [ $ARGONE = "rebuild" ]; then
+  if [ $ARGTWO = "vassar" ]; then
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/rebuild_vassar.sh"
+  fi
+fi

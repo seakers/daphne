@@ -50,9 +50,9 @@ else
     git clone https://github.com/seakers/VASSAR_server.git
 
     # --- Checkout temporary fix branch
-#    cd VASSAR_server || exit
-#    git checkout gabe_temporary_fix
-#    cd "$CODEDIR" || exit
+    cd VASSAR_server || exit
+    git checkout working_patch
+    cd "$CODEDIR" || exit
 fi
 
 # $VASSARLIB
@@ -63,9 +63,9 @@ else
     git clone https://github.com/seakers/VASSAR_lib.git
 
     # --- Checkout temporary fix branch
-#    cd VASSAR_lib || exit
-#    git checkout gabe_temporary_fix
-#    cd "$CODEDIR" || exit
+    cd VASSAR_lib || exit
+    git checkout working_patch
+    cd "$CODEDIR" || exit
 fi
 
 # $SYSARCHPROBLEMS

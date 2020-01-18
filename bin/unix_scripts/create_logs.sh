@@ -6,8 +6,8 @@ LOGDIR="${ROOTDIR}/logs"   # /daphne/logs
 
 # Make if DNE: /daphne/logs
 if [ -d "$LOGDIR" ]; then
-    echo "Log directory exists, removing"
-    rm -rf $LOGDIR
+    echo "Log directory exists..."
+    sudo rm -rf $LOGDIR
 fi
 
 echo "Creating log directory"
