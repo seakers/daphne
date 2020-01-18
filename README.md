@@ -12,7 +12,6 @@ If you would like read about the purpose of Daphne, the `/refs` directory contai
  - Docker
  - Docker Compose
  - Windows / Unix Based OS
- <br>
 
 ## Installation
 
