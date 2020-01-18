@@ -33,7 +33,7 @@ The key to leveraging the full power of this development tool is understanding i
 Refer to the directory structure diagram below learn about the important Daphne development directories
 <br>
 <br>
-```
+```bash
 [01;34m.[00m
 |-- [01;34mbin[00m
 |-- [01;34mbuild[00m
