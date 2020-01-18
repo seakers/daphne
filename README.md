@@ -33,17 +33,16 @@ The key to leveraging the full power of this development tool is understanding i
 Refer to the directory structure diagram below learn about the important Daphne development directories
 <br>
 <br>
+
 ```bash
-[01;34m.[00m
-|-- [01;34mbin[00m
-|-- [01;34mbuild[00m
-|-- [01;34mdaphne[00m
+ .
+|-- bin
+|-- build
+|-- daphne
 |-- docker-compose.yml
 |-- LICENSE
-|-- [01;34mlogs[00m
+|-- logs
 |-- README.md
-`-- [01;34mref[00m
+|-- ref
+`-- tree.txt
 ```
-
-
- 
