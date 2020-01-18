@@ -33,7 +33,7 @@ The key to leveraging the full power of this development tool is understanding i
 Refer to the directory structure diagram below learn about the important Daphne development directories
 <br>
 <br>
-
+```
 [01;34m.[00m
 |-- [01;34mbin[00m
 |-- [01;34mbuild[00m
@@ -43,7 +43,7 @@ Refer to the directory structure diagram below learn about the important Daphne 
 |-- [01;34mlogs[00m
 |-- README.md
 `-- [01;34mref[00m
-
+```
 
 
  
