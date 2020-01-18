@@ -22,6 +22,10 @@ JAVALIBS="${CODEDIR}/java_libs"                         # /daphne/daphne/java_li
 #########################################################
 
 
+
+# ----------> Create logs
+bash "${UNIXSCRIPTS}/create_logs.sh" "${ROOTDIR}"
+
 # ----------> Download tools
 bash "${UNIXSCRIPTS}/download_tools.sh"
 

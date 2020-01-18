@@ -12,6 +12,9 @@ services:
       - type: bind
         source: /home/gapaza/repositories/daphne/daphne/build/scripts
         target: /app/scripts
+      - type: bind
+        source: /home/gapaza/repositories/daphne/daphne/logs
+        target: /app/logs
     ports:
       - "8080:8080"
     depends_on:

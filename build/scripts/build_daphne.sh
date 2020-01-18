@@ -28,10 +28,13 @@ cd ../SystemArchitectureProblems || exit
 mvn install
 cd ../orekit/orekit || exit
 mvn install
+
+# VASSAR
 cd ../../VASSAR_lib || exit
 JAVA_LIBS=../java_libs gradle jar
 cp build/libs/vassar-1.0.jar ../java_libs/vassar.jar
 gradle publishToMavenLocal
+
 cd ../daphne-interface || exit
 npm install
 cd ..

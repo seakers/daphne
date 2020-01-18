@@ -48,6 +48,11 @@ if [ -d "$VASSARSERVER" ]; then
 else
     echo "VASSAR_server not found... cloning"
     git clone https://github.com/seakers/VASSAR_server.git
+
+    # --- Checkout temporary fix branch
+#    cd VASSAR_server || exit
+#    git checkout gabe_temporary_fix
+#    cd "$CODEDIR" || exit
 fi
 
 # $VASSARLIB
@@ -56,6 +61,11 @@ if [ -d "$VASSARLIB" ]; then
 else
     echo "VASSAR_lib not found... cloning"
     git clone https://github.com/seakers/VASSAR_lib.git
+
+    # --- Checkout temporary fix branch
+#    cd VASSAR_lib || exit
+#    git checkout gabe_temporary_fix
+#    cd "$CODEDIR" || exit
 fi
 
 # $SYSARCHPROBLEMS
