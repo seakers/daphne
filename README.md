@@ -35,14 +35,14 @@ Refer to the directory structure diagram below learn about the important Daphne 
 <br>
 
 [01;34m.[00m
-├── [01;34mbin[00m
-├── [01;34mbuild[00m
-├── [01;34mdaphne[00m
-├── docker-compose.yml
-├── LICENSE
-├── [01;34mlogs[00m
-├── README.md
-└── [01;34mref[00m
+|-- [01;34mbin[00m
+|-- [01;34mbuild[00m
+|-- [01;34mdaphne[00m
+|-- docker-compose.yml
+|-- LICENSE
+|-- [01;34mlogs[00m
+|-- README.md
+`-- [01;34mref[00m
 
 
 
