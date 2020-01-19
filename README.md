@@ -29,7 +29,7 @@ If you would like read about the purpose of Daphne, the `/refs` directory contai
 ## How to Develop
  
 The key to leveraging the full power of this development tool is understanding its directory structure.
-Refer to the top level directory structure diagram below learn about the important Daphne development directories.
+Refer to the top level directory structure diagram below to learn about the important Daphne development directories.
 <br>
 
 ```bash
