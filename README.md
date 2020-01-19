@@ -52,7 +52,7 @@ The two Daphne development directories are `/daphne` and `/logs`.
 ### `/daphne`
 
 This directory contains all the Daphne source code. 
-It resides on your local machine, but has been bind mounted on the Daphne container.
+It resides on your local machine and has been bind mounted on the Daphne container.
 This allows you to make changes to Daphne source code and see your changes reflected in real time.
 See the `/daphne` directory structure below for more information.
 
