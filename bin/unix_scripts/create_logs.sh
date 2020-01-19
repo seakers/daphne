@@ -25,7 +25,7 @@ else
     echo "File $ENVFILE does not exist. Creating one..."
     cd ${ROOTDIR} || exit
     touch "${ENVFILE}"
-    echo "ROOT_DIR=${ROOTDIR}" > ./.env
+    echo "ROOT_DIR=${ROOTDIR}" > "${ENVFILE}"
 fi
 
 
