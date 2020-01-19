@@ -42,7 +42,7 @@ else
     cd "$CODEDIR" || exit
 fi
 
-# ----------------------------------------------------- Pull Repos
+# ----------------------------------------------------- Clone Repos
 if [ -d "$VASSARSERVER" ]; then
     echo "VASSAR_server exists"
 else
