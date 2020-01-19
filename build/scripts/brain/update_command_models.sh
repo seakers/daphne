@@ -34,12 +34,10 @@ fi
 if [ -d "/app/daphne/daphne_brain/dialogue/models" ]; then
     echo "Moving models"
     rm -rf /app/daphne/daphne_brain/dialogue/models
-    mkdir /app/daphne/daphne_brain/dialogue/models
-    cp -r ./models ../daphne_brain/dialogue/models
+    mv ./models ../daphne_brain/dialogue
 else
     echo "Path /app/daphne/daphne_brain/dialogue/models does not exist"
-    mkdir /app/daphne/daphne_brain/dialogue/models
-    cp -r ./models ../daphne_brain/dialogue/models
+    mv ./models ../daphne_brain/dialogue
 fi
 
 

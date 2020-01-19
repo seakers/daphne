@@ -18,8 +18,15 @@ mkdir "$LOGDIR"
 
 
 # Make a new .env file
-cd ${ROOTDIR} || exit
-echo "Trying to remove: ${ENVFILE} if it exists, type in password if ok. Kill installer if not, no damage will be done"
-sudo rm -f "${ENVFILE}"
-touch "${ENVFILE}"
-echo "ROOT_DIR=${ROOTDIR}" > ./.env
+if [ -f $ENVFILE ]; then
+   echo "File $ENVFILE exists."
+   exit
+else
+    echo "File $ENVFILE does not exist. Creating one..."
+    cd ${ROOTDIR} || exit
+    touch "${ENVFILE}"
+    echo "ROOT_DIR=${ROOTDIR}" > ./.env
+fi
+
+
+
