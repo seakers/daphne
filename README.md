@@ -74,9 +74,9 @@ See the `/daphne` directory structure below for more information.
 
 ### `/logs`
 
-This directory contains two output logs for each Daphne component (standard error and output). 
+This directory contains two output logs (standard error and output) for each Daphne component. 
 These log files reside in the Docker container, so you will only have read access to them.
-Because they are being edited by the container in real time, you will have to re-open these files whenever you wish to see new output.
+Because they are being edited by the container in real time, you will have to re-open these files whenever you wish to see updated output.
 
 ```bash
 ./logs
