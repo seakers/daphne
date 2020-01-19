@@ -10,5 +10,8 @@ CODEDIR="${ROOTDIR}/daphne"     # /daphne/daphne
 #################################
 
 # ----------> Compose with docker from root
+
+
+
 cd $ROOTDIR || exit
 docker-compose build

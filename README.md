@@ -33,7 +33,7 @@ Refer to the top level directory structure diagram below learn about the importa
 <br>
 
 ```bash
-Daphne structure post installation
+Daphne Container - post installation
 .
 |-- bin                         --> Installation scripts
 |-- build                       --> Daphne local dependencies

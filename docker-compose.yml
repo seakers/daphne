@@ -7,13 +7,13 @@ services:
     image: daphne:test
     volumes:
       - type: bind
-        source: /home/gapaza/repositories/daphne/daphne/daphne
+        source: ${ROOT_DIR}/daphne
         target: /app/daphne
       - type: bind
-        source: /home/gapaza/repositories/daphne/daphne/build/scripts
+        source: ${ROOT_DIR}/build/scripts
         target: /app/scripts
       - type: bind
-        source: /home/gapaza/repositories/daphne/daphne/logs
+        source: ${ROOT_DIR}/logs
         target: /app/logs
     ports:
       - "8080:8080"
