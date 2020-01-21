@@ -49,7 +49,7 @@ else
     echo "VASSAR_server not found... cloning"
     git clone https://github.com/seakers/VASSAR_server.git
 
-    # --- Checkout temporary fix branch
+    # --- Checkout temporary fix branch ------------------------------------------------
     cd VASSAR_server || exit
     git checkout working_patch
     cd "$CODEDIR" || exit
@@ -62,7 +62,7 @@ else
     echo "VASSAR_lib not found... cloning"
     git clone https://github.com/seakers/VASSAR_lib.git
 
-    # --- Checkout temporary fix branch
+    # --- Checkout temporary fix branch ------------------------------------------------
     cd VASSAR_lib || exit
     git checkout working_patch
     cd "$CODEDIR" || exit
@@ -98,6 +98,11 @@ if [ -d "$DAPHNEBRAIN" ]; then
 else
     echo "daphne_brain not found... cloning"
     git clone https://github.com/seakers/daphne_brain.git
+
+    # --- Checkout temporary fix branch ------------------------------------------------
+    cd VASSAR_lib || exit
+    git checkout ip_environment_variables
+    cd "$CODEDIR" || exit
 fi
 
 # $COMMANDCLASSIFIER
