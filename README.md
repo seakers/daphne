@@ -9,22 +9,32 @@ If you would like read about the purpose of Daphne, the `/refs` directory contai
 
 ## Dependencies
 
- - Docker
- - Docker Compose
- - Windows / Unix Based OS
 
-## Installation
 
 ### Unix
 
- 1. Navigate to the root directory of this repository
- 2. Run <i>unix_installer</i> shell script with the command `bash ./bin/unix_installer.sh`
+ - Docker
+   - Installation instructions here: https://docs.docker.com/install/linux/docker-ce/ubuntu/
+ - Docker Compose
+   - Installation instruction here: https://docs.docker.com/compose/install/
+
+
+### Windows 10
+
+ - Windows Subsystem - Ubuntu 18.04 (only for Windows)
+   - Installation instructions here https://docs.microsoft.com/en-us/windows/wsl/install-win10
+   - <b>Stipulation</b>: you must `git clone` this project into your Windows file system. Not in the Ubuntu one.
+ - Docker / Docker Compose
+   - Installation instructions here: https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly
+   
+   
+
+## Installation
+
+ 1. Navigate to the root directory of this repository (using Ubuntu shell if on Windows)
+ 2. Run the <i>unix_installer</i> shell script with the command `bash ./bin/unix_installer.sh`
  3. Once the script has finished, open a web browser (firefox preferred) and navigate to `localhost:8080`  
 
-### Windows
-
- - Coming soon
- 
  
 ## How to Develop
  
