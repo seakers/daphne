@@ -100,7 +100,7 @@ else
     git clone https://github.com/seakers/daphne_brain.git
 
     # --- Checkout temporary fix branch ------------------------------------------------
-    cd VASSAR_lib || exit
+    cd daphne_brain || exit
     git checkout ip_environment_variables
     cd "$CODEDIR" || exit
 fi
