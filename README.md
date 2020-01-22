@@ -1,7 +1,7 @@
 # Daphne Development Container
 
 This repository houses a docker implementation of Daphne that can run on both Windows and Unix based operating systems. 
-The purpose of this container is to aid in Daphne feature development. 
+The purpose of this container is to shorten the Daphne development cycle. 
 <br>
 <br>
 If you would like read about the purpose of Daphne, the `/refs` directory contains published papers detailing just that.
