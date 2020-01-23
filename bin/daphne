@@ -4,11 +4,183 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")              # /daphne/bin
 UNIXSCRIPTS="${SCRIPTPATH}/unix_scripts"     # /daphne/bin/unix_scripts
 
-ARGONE="${1}"
-ARGTWO="${2}"
-
-if [ $ARGONE = "rebuild" ]; then
-  if [ $ARGTWO = "vassar" ]; then
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/rebuild_vassar.sh"
-  fi
+# -----------------------------------------------------------------------------------------------------> No user command
+if [ "${1}" == "" ]; then
+  echo "Please enter a command for daphne..."
+  exit
 fi
+
+# -----------------------------------------------------------------------------------------------------------> daphne up
+if [ "${1}" == "up" ]; then
+  echo "Starting containers..."
+  bash "${UNIXSCRIPTS}/run_containers.sh"
+  echo "Initializing supervisor..."
+  bash "${UNIXSCRIPTS}/run_container_script.sh" "init_supervisor.sh"
+  echo "Migrating databases..."
+  bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
+  echo "Starting daphne services..."
+  bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+  exit
+fi
+
+# ---------------------------------------------------------------------------------------------------------> daphne down
+if [ "${1}" == "down" ]; then
+  echo "Stopping all daphne services..."
+  bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+  echo "Stopping and removing containers..."
+  bash "${UNIXSCRIPTS}/remove_containers.sh"
+  exit
+fi
+
+# --------------------------------------------------------------------------------------------------------> daphne start
+if [ "${1}" == "start" ]; then
+
+  if [ "${2}" == "" ]; then
+    echo "Please specify which service to start... (all, interface, brain, vassar, datamining)"
+    exit
+  fi
+
+  if [ "${2}" == "all" ]; then
+    echo "Starting daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+    exit
+  fi
+
+  if [ "${2}" == "vassar" ]; then
+    echo "Starting vassar"
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
+    exit
+  fi
+
+  if [ "${2}" == "brain" ]; then
+
+    if [ "${3}" == "-m" ]; then
+      echo "Migrating database"
+      bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
+    fi
+    echo "Starting brain"
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
+    exit
+  fi
+
+  if [ "${2}" == "interface" ]; then
+    echo "Starting interface"
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/start_interface.sh"
+    exit
+  fi
+
+  if [ "${2}" == "datamining" ]; then
+    echo "Starting datamining"
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/start_datamining.sh"
+    exit
+  fi
+
+  echo "Service not recognized... exiting"
+  echo "Please specify which service to start... (all, interface, brain, vassar, datamining)"
+  exit
+fi
+
+# ---------------------------------------------------------------------------------------------------------> daphne stop
+if [ "${1}" == "stop" ]; then
+
+  if [ "${2}" == "" ]; then
+    echo "Please specify which service to stop... (all, interface, brain, vassar, datamining)"
+    exit
+  fi
+
+  if [ "${2}" == "all" ]; then
+    echo "Stopping all daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+    exit
+  fi
+
+  if [ "${2}" == "vassar" ]; then
+    echo "Stopping vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
+    exit
+  fi
+
+  if [ "${2}" == "brain" ]; then
+    echo "Stopping brain..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
+    exit
+  fi
+
+  if [ "${2}" == "interface" ]; then
+    echo "Stopping interface..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/stop_interface.sh"
+    exit
+  fi
+
+  if [ "${2}" == "datamining" ]; then
+    echo "Stopping datamining..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/stop_datamining.sh"
+    exit
+  fi
+
+  echo "Service not recognized... exiting"
+  echo "Please specify which service to stop... (all, interface, brain, vassar, datamining)"
+  exit
+fi
+
+# ------------------------------------------------------------------------------------------------------> daphne restart
+if [ "${1}" == "restart" ]; then
+
+  if [ "${2}" == "" ]; then
+    echo "Please specify which service you would like to restart..."
+    exit
+  fi
+
+  if [ "${2}" == "all" ]; then
+    echo "Stopping all daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+    echo "Starting all daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+    exit
+  fi
+
+  if [ "${2}" == "vassar" ]; then
+    echo "Stopping vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
+    echo "Starting vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
+    exit
+  fi
+
+  if [ "${2}" == "brain" ]; then
+    echo "Stopping brain..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
+    if [ "${3}" == "-m" ]; then
+      echo "Migrating database..."
+      bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
+    fi
+    echo "Starting brain..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
+    exit
+  fi
+
+  if [ "${2}" == "interface" ]; then
+    echo "Stopping interface..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/stop_interface.sh"
+    echo "Starting interface..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/start_interface.sh"
+    exit
+  fi
+
+  if [ "${2}" == "datamining" ]; then
+    echo "Stopping datamining..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/stop_datamining.sh"
+    echo "Starting datamining..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/start_datamining.sh"
+    exit
+  fi
+
+  echo "Service not recognized... exiting"
+  echo "Please specify which service to restart... (all, interface, brain, vassar, datamining)"
+  exit
+fi
+
+
+
+
+

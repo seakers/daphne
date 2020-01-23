@@ -50,8 +50,14 @@ bash "${UNIXSCRIPTS}/run_container_script.sh" "init_supervisor.sh"
 # ----------> Build daphne
 bash "${UNIXSCRIPTS}/run_container_script.sh" "build_daphne.sh"
 
+# ----------> Update Daphne docker image
+bash "${UNIXSCRIPTS}/commit_container_changes.sh"
+
 # ----------> Run services
 bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+
+# ----------> Add daphne to PATH
+bash "${UNIXSCRIPTS}/add_to_path.sh"
 
 
 

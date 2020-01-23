@@ -12,6 +12,6 @@ CODEDIR="${ROOTDIR}/daphne"     # /daphne/daphne
 # ----------> Commit container changes
 bash "${SCRIPTPATH}/commit_container_changes.sh"
 
-# ----------> Stop and remove containers
+# ----------> Remove containers
 cd $ROOTDIR || exit
-docker-compose stop
+docker-compose down
