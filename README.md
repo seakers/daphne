@@ -100,3 +100,73 @@ Because they are being edited by the container in real time, you will have to re
 `-- vassar.out.log
 ```
 
+## Daphne Terminal Commands
+
+At the end of installation, you will be asked if you want to add the "daphne" executable to your PATH environment variable.
+If you opt to, then you will have some useful Daphne commands at your disposal.
+Please see the commands below.
+
+Note: after the installer edits either your .bashrc or .bash_profile, you will have to start a new terminal to reflect the changes.
+
+
+
+<br>
+
+
+### `daphne up`
+
+This command starts all of Daphne's containers and starts all of Daphne's services
+
+<br>
+
+### `daphne down`
+
+This command will stop all of Daphne's running services and remove all of Daphne's docker containers.
+The `daphne up` command will have to be ran after this to re-start Daphne
+
+<br>
+
+### `daphne start (service)`
+
+This command will start a daphne service if it is stopped.
+
+Your options for `(service)` are: `interface`, `brain`, `vassar`, `datamining`, or `all`
+
+Ex `daphne start all`
+
+If you would like to migrate the daphne_brain database when running the brain `daphne start brain`, add the -m 
+flag at the end `daphne start brain -m`
+
+<br>
+
+
+### `daphne restart (service)`
+
+This command will restart a daphne service if it is running.
+
+Your options for `(service)` are: `interface`, `brain`, `vassar`, `datamining`, or `all`
+
+Ex `daphne restart vassar`
+
+If you would like to migrate the daphne_brain database when restarting the brain `daphne restart brain`, add the -m 
+flag at the end `daphne restart brain -m`
+
+<br>
+
+### `daphne stop (service)`
+
+This command will stop a daphne service if it is running.
+
+Your options for `(service)` are: `interface`, `brain`, `vassar`, `datamining`, or `all`
+
+Ex `daphne stop datamining`
+
+
+
+
+
+
+
+
+
+
