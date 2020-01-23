@@ -32,9 +32,9 @@ If you would like read about the purpose of Daphne, the `/refs` directory contai
 ## Installation
 
  1. Make sure ports: `8080`, `5432`, `6379`, `5671`, `5672`, `15672` are open on your machine (docker networking will need these)
- 1. Navigate to the root directory of this repository (using Ubuntu shell if on Windows)
- 2. Run the <i>unix_installer</i> shell script with the command `bash ./bin/unix_installer.sh`
- 3. Once the script has finished, open a web browser (firefox preferred) and navigate to `localhost:8080`  
+ 2. Navigate to the root directory of this repository (using Ubuntu shell if on Windows)
+ 3. Run the <i>unix_installer</i> shell script with the command `bash ./bin/unix_installer.sh`
+ 4. Once the script has finished, open a web browser (firefox preferred) and navigate to `localhost:8080`  
 
  
 ## How to Develop
