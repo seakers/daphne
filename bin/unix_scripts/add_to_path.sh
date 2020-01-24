@@ -29,7 +29,7 @@ BASHRC_FILE="${HOME}/.bashrc"
 
 if [ -f $BASH_PROFILE_FILE ]; then
    echo "File $BASH_PROFILE_FILE exists... Setting PATH there"
-   echo "export PATH=$PATH:${BINDIR}" >> ${BASH_PROFILE_FILE}
+   echo "export PATH=\$PATH:${BINDIR}" >> ${BASH_PROFILE_FILE}
    source ${BASH_PROFILE_FILE}
    chmod +x "${DAPHNE_EXECUTABLE}"
    exit
@@ -37,7 +37,7 @@ else
   echo "${BASH_PROFILE_FILE}, does not exist.. Checking for ${BASHRC_FILE}"
   if [ -f $BASHRC_FILE ]; then
      echo "File $BASHRC_FILE exists... Setting PATH there"
-     echo "export PATH=$PATH:${BINDIR}" >> ${BASHRC_FILE}
+     echo "export PATH=\$PATH:${BINDIR}" >> ${BASHRC_FILE}
      source ${BASHRC_FILE}
      chmod +x "${DAPHNE_EXECUTABLE}"
      exit
