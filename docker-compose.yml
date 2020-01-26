@@ -43,3 +43,16 @@ services:
       - "5671:5671"
     hostname: "my-rabbitmq"
     container_name: daphne_rabbitmq
+  mycroft:
+    image: mycroftai/docker-mycroft:latest
+    devices:
+      - "/dev/snd"
+    environment:
+      - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
+    volumes:
+      - ${ROOT_DIR}/mycroft:/root/.mycroft
+      - ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native
+      - ~/.config/pulse/cookie:/root/.config/pulse/cookie
+    ports:
+      - "8181:8181"
+    container_name: mycroft
