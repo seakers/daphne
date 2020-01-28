@@ -98,11 +98,6 @@ if [ -d "$DAPHNEBRAIN" ]; then
 else
     echo "daphne_brain not found... cloning"
     git clone https://github.com/seakers/daphne_brain.git
-
-    # --- Checkout temporary fix branch ------------------------------------------------
-    cd daphne_brain || exit
-    git checkout ip_environment_variables
-    cd "$CODEDIR" || exit
 fi
 
 # $COMMANDCLASSIFIER

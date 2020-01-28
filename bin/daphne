@@ -180,7 +180,10 @@ if [ "${1}" == "restart" ]; then
   exit
 fi
 
-
-
+# ---------------------------------------------------------------------------------------------------> daphne build prod
+if [ "${1}" == "build" ] && [ "${2}" == "prod" ]; then
+  echo "Building production frontend..."
+  bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/build_dist.sh"
+fi
 
 
