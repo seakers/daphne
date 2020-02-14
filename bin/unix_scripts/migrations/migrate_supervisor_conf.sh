@@ -18,6 +18,6 @@ bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
 docker cp "${BUILDDIR}/tools/supervisord.conf" daphne_server:/etc/supervisor
 
 # --> Initialize the new supervisor file
-bash "${UNIXSCRIPTS}/run_container_script.sh" "init_supervisor.sh"
+bash "${UNIXSCRIPTS}/run_container_script.sh" "reload_supervisor.sh"
 
 echo "All services have been stopped... You will have to restart them"
