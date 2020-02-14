@@ -11,4 +11,5 @@ CODEDIR="${ROOTDIR}/daphne"          # /daphne/daphne
 ######################################
 
 
-docker cp "${SCRIPSDIR}/." daphne_server:/app/scripts
+
+docker cp "${BUILDDIR}/tools/supervisord.conf" daphne_server:/etc/supervisor
