@@ -197,7 +197,7 @@ if [ "${1}" == "migrate" ]; then
 
   if [ "${2}" == "scripts" ]; then
     echo "Migrating scripts..."
-    bash "${UNIXSCRIPTS}/migrate_scripts.sh"
+    bash "${UNIXSCRIPTS}/migrations/migrate_scripts.sh"
     exit
   fi
 
