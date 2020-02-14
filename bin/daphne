@@ -187,10 +187,26 @@ if [ "${1}" == "build" ] && [ "${2}" == "prod" ]; then
 fi
 
 
+# ------------------------------------------------------------------------------------------------------> daphne migrate
+# Purpose: to copy local changes to the container depending on the migrate command
+if [ "${1}" == "migrate" ]; then
+  if [ "${2}" == "" ]; then
+    echo "Please specify what you would like to migrate..."
+    exit
+  fi
+
+  if [ "${2}" == "scripts" ]; then
+    echo "Migrating scripts..."
+    bash "${UNIXSCRIPTS}/migrate_scripts.sh"
+    exit
+  fi
+
+fi
+
+
 
 # ------------------------------------------------------------------------------------------------------> daphne rebuild
 if [ "${1}" == "rebuild" ]; then
-
   if [ "${2}" == "" ]; then
     echo "Please specify which service you would like to rebuild..."
     exit
