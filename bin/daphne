@@ -201,6 +201,12 @@ if [ "${1}" == "migrate" ]; then
     exit
   fi
 
+  if [ "${2}" == "supervisor" ]; then
+    echo "Migrating supervisor.conf file..."
+    bash "${UNIXSCRIPTS}/migrations/migrate_supervisor_conf.sh"
+    exit
+  fi
+
 fi
 
 
