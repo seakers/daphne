@@ -187,3 +187,21 @@ if [ "${1}" == "build" ] && [ "${2}" == "prod" ]; then
 fi
 
 
+
+# ------------------------------------------------------------------------------------------------------> daphne rebuild
+if [ "${1}" == "rebuild" ]; then
+
+  if [ "${2}" == "" ]; then
+    echo "Please specify which service you would like to rebuild..."
+    exit
+  fi
+
+  if [ "${2}" == "vassar" ]; then
+    echo "Rebuilding Vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/rebuild_vassar.sh"
+    exit
+  fi
+
+fi
+
+
