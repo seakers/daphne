@@ -184,6 +184,7 @@ fi
 if [ "${1}" == "build" ] && [ "${2}" == "prod" ]; then
   echo "Building production frontend..."
   bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/build_dist.sh"
+  exit
 fi
 
 
@@ -226,4 +227,11 @@ if [ "${1}" == "rebuild" ]; then
 
 fi
 
+
+# --------------------------------------------------------------------------------------------------------> daphne shell
+if [ "${1}" == "shell" ]; then
+  echo "Getting daphne contianer shell"
+  docker exec -it daphne_server bash
+  exit
+fi
 
