@@ -221,6 +221,9 @@ if [ "${1}" == "rebuild" ]; then
 
   if [ "${2}" == "vassar" ]; then
     echo "Rebuilding Vassar..."
+    if [ "${3}" == "-c" ]; then
+      bash "${UNIXSCRIPTS}/clear_coverage_database.sh"
+    fi
     bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/build_vassar.sh"
     exit
   fi
