@@ -23,8 +23,8 @@ If you would like read about the purpose of Daphne, the `/refs` directory contai
 
  - Windows Subsystem - Ubuntu 18.04 (only for Windows)
    - Installation instructions here https://docs.microsoft.com/en-us/windows/wsl/install-win10
-   - <b>Stipulation</b>: you must `git clone` this project into your Windows file system (\c or \e drive) from your Ubuntu shell. 
- - Docker / Docker Compose
+   - <b>You must `git clone` this project into your Windows file system (\c or \e drive) from your Ubuntu shell. 
+ - Docker / Docker Compose</b>
    - Installation instructions here: https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly
    
    
