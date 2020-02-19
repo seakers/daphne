@@ -1,0 +1,61 @@
+{
+  "name": "logtool",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "webpack",
+    "lint": "vue-cli-service lint",
+    "start:dev": "webpack-dev-server"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "html-loader": "^0.5.5",
+    "lodash-es": "^4.17.15",
+    "vue": "^2.6.11",
+    "vuetify": "^2.2.13",
+    "vuetify-loader": "^1.4.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-plugin-eslint": "^4.2.0",
+    "@vue/cli-service": "^4.2.0",
+    "babel-eslint": "^10.0.3",
+    "clean-webpack-plugin": "^3.0.0",
+    "deepmerge": "^4.2.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.1.2",
+    "fibers": "^4.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "dist/index.html",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
