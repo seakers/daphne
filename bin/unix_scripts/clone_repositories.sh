@@ -17,6 +17,7 @@ DAPHNEBRAIN="${CODEDIR}/daphne_brain"
 COMMANDCLASSIFIER="${CODEDIR}/command_classifier"
 HISTORICALDB="${CODEDIR}/historical_db"
 DATAMINING="${CODEDIR}/data-mining"
+MOPAOS="${CODEDIR}/mopAOS"
 DAPHNEINTERFACE="${CODEDIR}/daphne-interface"
 JAVALIBS="${CODEDIR}/java_libs"
 
@@ -122,6 +123,19 @@ if [ -d "$DATAMINING" ]; then
 else
     echo "data-mining not found... cloning"
     git clone https://github.com/seakers/data-mining.git
+fi
+
+# mopAOS
+if [ -d "$MOPAOS" ]; then
+    echo "VASSAR_server exists"
+else
+    echo "VASSAR_server not found... cloning"
+    git clone https://github.com/seakers/mopAOS.git
+
+    # --- Checkout temporary fix branch ------------------------------------------------
+    cd mopAOS || exit
+    git checkout develop
+    cd "$CODEDIR" || exit
 fi
 
 # $DAPHNEINTERFACE
