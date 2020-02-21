@@ -4,13 +4,261 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")              # /daphne/bin
 UNIXSCRIPTS="${SCRIPTPATH}/unix_scripts"     # /daphne/bin/unix_scripts
 
-# -----------------------------------------------------------------------------------------------------> No user command
-if [ "${1}" == "" ]; then
-  echo "Please enter a command for daphne..."
-  exit
-fi
+## -----------------------------------------------------------------------------------------------------> No user command
+#if [ "${1}" == "" ]; then
+#  echo "Please enter a command for daphne..."
+#  exit
+#fi
+#
+## -----------------------------------------------------------------------------------------------------------> daphne up
+#if [ "${1}" == "up" ]; then
+#  echo "Starting containers..."
+#  bash "${UNIXSCRIPTS}/run_containers.sh"
+#  echo "Initializing supervisor..."
+#  bash "${UNIXSCRIPTS}/run_container_script.sh" "init_supervisor.sh"
+#  echo "Migrating databases..."
+#  bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
+#  echo "Indexing historian database..."
+#  bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/index_historian_database.sh"
+#  echo "Starting daphne services..."
+#  bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+#  exit
+#fi
+#
+## ---------------------------------------------------------------------------------------------------------> daphne down
+#if [ "${1}" == "down" ]; then
+#  echo "Stopping all daphne services..."
+#  bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+#  echo "Stopping and removing containers..."
+#  bash "${UNIXSCRIPTS}/remove_containers.sh"
+#  exit
+#fi
+#
+## --------------------------------------------------------------------------------------------------------> daphne start
+#if [ "${1}" == "start" ]; then
+#
+#  if [ "${2}" == "" ]; then
+#    echo "Please specify which service to start... (all, interface, brain, vassar, datamining)"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "all" ]; then
+#    echo "Starting daphne services..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "vassar" ]; then
+#    echo "Starting vassar"
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "brain" ]; then
+#
+#    if [ "${3}" == "-m" ]; then
+#      echo "Migrating database"
+#      bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
+#    fi
+#    echo "Starting brain"
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "interface" ]; then
+#    echo "Starting interface"
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/start_interface.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "datamining" ]; then
+#    echo "Starting datamining"
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/start_datamining.sh"
+#    exit
+#  fi
+#
+#  echo "Service not recognized... exiting"
+#  echo "Please specify which service to start... (all, interface, brain, vassar, datamining)"
+#  exit
+#fi
+#
+## ---------------------------------------------------------------------------------------------------------> daphne stop
+#if [ "${1}" == "stop" ]; then
+#
+#  if [ "${2}" == "" ]; then
+#    echo "Please specify which service to stop... (all, interface, brain, vassar, datamining)"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "all" ]; then
+#    echo "Stopping all daphne services..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "vassar" ]; then
+#    echo "Stopping vassar..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "brain" ]; then
+#    echo "Stopping brain..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "interface" ]; then
+#    echo "Stopping interface..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/stop_interface.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "datamining" ]; then
+#    echo "Stopping datamining..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/stop_datamining.sh"
+#    exit
+#  fi
+#
+#  echo "Service not recognized... exiting"
+#  echo "Please specify which service to stop... (all, interface, brain, vassar, datamining)"
+#  exit
+#fi
+#
+## ------------------------------------------------------------------------------------------------------> daphne restart
+#if [ "${1}" == "restart" ]; then
+#
+#  if [ "${2}" == "" ]; then
+#    echo "Please specify which service you would like to restart..."
+#    exit
+#  fi
+#
+#  if [ "${2}" == "all" ]; then
+#    echo "Stopping all daphne services..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+#    echo "Starting all daphne services..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "vassar" ]; then
+#    echo "Stopping vassar..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
+#    echo "Starting vassar..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "brain" ]; then
+#    echo "Stopping brain..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
+#    if [ "${3}" == "-m" ]; then
+#      echo "Migrating database..."
+#      bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
+#    fi
+#    echo "Starting brain..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "interface" ]; then
+#    echo "Stopping interface..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/stop_interface.sh"
+#    echo "Starting interface..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/start_interface.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "datamining" ]; then
+#    echo "Stopping datamining..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/stop_datamining.sh"
+#    echo "Starting datamining..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/start_datamining.sh"
+#    exit
+#  fi
+#
+#  echo "Service not recognized... exiting"
+#  echo "Please specify which service to restart... (all, interface, brain, vassar, datamining)"
+#  exit
+#fi
+#
+## ---------------------------------------------------------------------------------------------------> daphne build prod
+#if [ "${1}" == "build" ] && [ "${2}" == "prod" ]; then
+#  echo "Building production frontend..."
+#  bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/build_dist.sh"
+#  exit
+#fi
+#
+#
+## ------------------------------------------------------------------------------------------------------> daphne migrate
+## Purpose: to copy local changes to the container depending on the migrate command
+#if [ "${1}" == "migrate" ]; then
+#  if [ "${2}" == "" ]; then
+#    echo "Please specify what you would like to migrate..."
+#    exit
+#  fi
+#
+#  if [ "${2}" == "scripts" ]; then
+#    echo "Migrating scripts..."
+#    bash "${UNIXSCRIPTS}/migrations/migrate_scripts.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "supervisor" ]; then
+#    echo "Migrating supervisor.conf file..."
+#    bash "${UNIXSCRIPTS}/migrations/migrate_supervisor_conf.sh"
+#    exit
+#  fi
+#
+#fi
+#
+#
+#
+## ------------------------------------------------------------------------------------------------------> daphne rebuild
+#if [ "${1}" == "rebuild" ]; then
+#  if [ "${2}" == "" ]; then
+#    echo "Please specify which service you would like to rebuild..."
+#    exit
+#  fi
+#
+#  if [ "${2}" == "vassar" ]; then
+#    echo "Rebuilding vassar..."
+#    if [ "${3}" == "-c" ]; then
+#      bash "${UNIXSCRIPTS}/clear_coverage_database.sh"
+#    fi
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/build_vassar.sh"
+#    exit
+#  fi
+#
+#  if [ "${2}" == "datamining" ]; then
+#    echo "Rebuilding datamining..."
+#    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/build_datamining.sh"
+#    exit
+#  fi
+#
+#fi
+#
+#
+## --------------------------------------------------------------------------------------------------------> daphne shell
+#if [ "${1}" == "shell" ]; then
+#  echo "Getting daphne contianer shell"
+#  docker exec -it daphne_server bash
+#  exit
+#fi
+#
+#
+## Terminate
+#exit
 
-# -----------------------------------------------------------------------------------------------------------> daphne up
+
+
+
+
+
+
+
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne up
 if [ "${1}" == "up" ]; then
   echo "Starting containers..."
   bash "${UNIXSCRIPTS}/run_containers.sh"
@@ -25,7 +273,8 @@ if [ "${1}" == "up" ]; then
   exit
 fi
 
-# ---------------------------------------------------------------------------------------------------------> daphne down
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne down
 if [ "${1}" == "down" ]; then
   echo "Stopping all daphne services..."
   bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
@@ -34,134 +283,63 @@ if [ "${1}" == "down" ]; then
   exit
 fi
 
-# --------------------------------------------------------------------------------------------------------> daphne start
-if [ "${1}" == "start" ]; then
-
-  if [ "${2}" == "" ]; then
-    echo "Please specify which service to start... (all, interface, brain, vassar, datamining)"
-    exit
-  fi
-
-  if [ "${2}" == "all" ]; then
-    echo "Starting daphne services..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
-    exit
-  fi
-
-  if [ "${2}" == "vassar" ]; then
-    echo "Starting vassar"
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
-    exit
-  fi
-
-  if [ "${2}" == "brain" ]; then
-
-    if [ "${3}" == "-m" ]; then
-      echo "Migrating database"
-      bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
-    fi
-    echo "Starting brain"
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
-    exit
-  fi
-
-  if [ "${2}" == "interface" ]; then
-    echo "Starting interface"
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/start_interface.sh"
-    exit
-  fi
-
-  if [ "${2}" == "datamining" ]; then
-    echo "Starting datamining"
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/start_datamining.sh"
-    exit
-  fi
-
-  echo "Service not recognized... exiting"
-  echo "Please specify which service to start... (all, interface, brain, vassar, datamining)"
+#########################################################################################################################################
+# ---------------------------------------------------------------------------------------------------------------------> daphne status
+if [ "${1}" == "status" ]; then
+  bash "${UNIXSCRIPTS}/run_container_script.sh" "status.sh"
   exit
 fi
 
-# ---------------------------------------------------------------------------------------------------------> daphne stop
-if [ "${1}" == "stop" ]; then
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne shell
+if [ "${1}" == "shell" ]; then
+  echo "Getting daphne contianer shell"
+  docker exec -it daphne_server bash
+  exit
+fi
 
-  if [ "${2}" == "" ]; then
-    echo "Please specify which service to stop... (all, interface, brain, vassar, datamining)"
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne prod
+if [ "${1}" == "prod" ]; then
+  if [ "${2}" == "build" ]; then # -----------------------------------------------------------------------------------> build
+    echo "Building production frontend..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/build_dist.sh"
     exit
   fi
 
-  if [ "${2}" == "all" ]; then
-    echo "Stopping all daphne services..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+  echo "Please enter a valid daphne prod command"
+  echo "daphne prod (build)"
+  exit
+fi
+
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne supervisor
+if [ "${1}" == "supervisor" ]; then
+  if [ "${2}" == "migrate" ]; then # ---------------------------------------------------------------------------------> migrate
+    echo "Migrating supervisor..."
+    bash "${UNIXSCRIPTS}/migrations/migrate_supervisor_conf.sh"
     exit
   fi
 
-  if [ "${2}" == "vassar" ]; then
-    echo "Stopping vassar..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
+  echo "Please enter a valid daphne supervisor command"
+  echo "daphne supervisor (migrate)"
+  exit
+fi
+
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne interface
+if [ "${1}" == "interface" ]; then
+  if [ "${2}" == "start" ]; then # -----------------------------------------------------------------------------------> start
+    echo "Starting interface..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/start_interface.sh"
     exit
   fi
-
-  if [ "${2}" == "brain" ]; then
-    echo "Stopping brain..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
-    exit
-  fi
-
-  if [ "${2}" == "interface" ]; then
+  if [ "${2}" == "stop" ]; then # ------------------------------------------------------------------------------------> stop
     echo "Stopping interface..."
     bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/stop_interface.sh"
     exit
   fi
-
-  if [ "${2}" == "datamining" ]; then
-    echo "Stopping datamining..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/stop_datamining.sh"
-    exit
-  fi
-
-  echo "Service not recognized... exiting"
-  echo "Please specify which service to stop... (all, interface, brain, vassar, datamining)"
-  exit
-fi
-
-# ------------------------------------------------------------------------------------------------------> daphne restart
-if [ "${1}" == "restart" ]; then
-
-  if [ "${2}" == "" ]; then
-    echo "Please specify which service you would like to restart..."
-    exit
-  fi
-
-  if [ "${2}" == "all" ]; then
-    echo "Stopping all daphne services..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
-    echo "Starting all daphne services..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
-    exit
-  fi
-
-  if [ "${2}" == "vassar" ]; then
-    echo "Stopping vassar..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
-    echo "Starting vassar..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
-    exit
-  fi
-
-  if [ "${2}" == "brain" ]; then
-    echo "Stopping brain..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
-    if [ "${3}" == "-m" ]; then
-      echo "Migrating database..."
-      bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
-    fi
-    echo "Starting brain..."
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
-    exit
-  fi
-
-  if [ "${2}" == "interface" ]; then
+  if [ "${2}" == "restart" ]; then # ---------------------------------------------------------------------------------> restart
     echo "Stopping interface..."
     bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/stop_interface.sh"
     echo "Starting interface..."
@@ -169,80 +347,163 @@ if [ "${1}" == "restart" ]; then
     exit
   fi
 
-  if [ "${2}" == "datamining" ]; then
+  echo "Please enter a valid daphne interface command"
+  echo "daphne interface (start / stop / restart)"
+  exit
+fi
+
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne brain
+if [ "${1}" == "brain" ]; then
+  if [ "${2}" == "start" ]; then # -----------------------------------------------------------------------------------> start
+    echo "Starting brain..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
+    exit
+  fi
+  if [ "${2}" == "stop" ]; then # ------------------------------------------------------------------------------------> stop
+    echo "Stopping brain..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
+    exit
+  fi
+  if [ "${2}" == "restart" ]; then # ---------------------------------------------------------------------------------> restart
+    echo "Stopping brain..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/stop_brain.sh"
+    echo "Starting brain..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/start_brain.sh"
+    exit
+  fi
+  if [ "${2}" == "index_historian_database" ]; then # ----------------------------------------------------------------> index_historian_database
+    echo "Indexing historical database..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/index_historian_database.sh"
+    exit
+  fi
+  if [ "${2}" == "migrate" ]; then # ---------------------------------------------------------------------------------> migrate
+    echo "Migrating database..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/migrate_database.sh"
+    exit
+  fi
+  if [ "${2}" == "train" ]; then # -----------------------------------------------------------------------------------> train
+    echo "Training models..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "brain/update_command_models.sh"
+    exit
+  fi
+
+  echo "Please enter a valid daphne brain command"
+  echo "daphne brain (start / stop / restart / index_historian_database / migrate / train)"
+  exit
+fi
+
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne vassar
+if [ "${1}" == "vassar" ]; then
+  if [ "${2}" == "start" ]; then # -----------------------------------------------------------------------------------> start
+    echo "Starting vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
+    exit
+  fi
+  if [ "${2}" == "stop" ]; then # ------------------------------------------------------------------------------------> stop
+    echo "Stopping vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
+    exit
+  fi
+  if [ "${2}" == "restart" ]; then # ---------------------------------------------------------------------------------> restart
+    echo "Stopping vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/stop_vassar.sh"
+    echo "Starting vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/start_vassar.sh"
+    exit
+  fi
+  if [ "${2}" == "build" ]; then # -----------------------------------------------------------------------------------> build
+    echo "Building vassar..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/build_vassar.sh"
+    exit
+  fi
+  if [ "${2}" == "clean" ]; then # -----------------------------------------------------------------------------------> clean
+    echo "Cleaning vassar coverage database..."
+    bash "${UNIXSCRIPTS}/clear_coverage_database.sh"
+    exit
+  fi
+
+  echo "Please enter a valid daphne vassar command"
+  echo "daphne vassar (start / stop / restart / build / clean)"
+  exit
+fi
+
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne datamining
+if [ "${1}" == "datamining" ]; then
+  if [ "${2}" == "start" ]; then # -----------------------------------------------------------------------------------> start
+    echo "Starting datamining..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/start_datamining.sh"
+    exit
+  fi
+  if [ "${2}" == "stop" ]; then # ------------------------------------------------------------------------------------> stop
+    echo "Stopping datamining..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/stop_datamining.sh"
+    exit
+  fi
+  if [ "${2}" == "restart" ]; then # ---------------------------------------------------------------------------------> restart
     echo "Stopping datamining..."
     bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/stop_datamining.sh"
     echo "Starting datamining..."
     bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/start_datamining.sh"
     exit
   fi
-
-  echo "Service not recognized... exiting"
-  echo "Please specify which service to restart... (all, interface, brain, vassar, datamining)"
-  exit
-fi
-
-# ---------------------------------------------------------------------------------------------------> daphne build prod
-if [ "${1}" == "build" ] && [ "${2}" == "prod" ]; then
-  echo "Building production frontend..."
-  bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/build_dist.sh"
-  exit
-fi
-
-
-# ------------------------------------------------------------------------------------------------------> daphne migrate
-# Purpose: to copy local changes to the container depending on the migrate command
-if [ "${1}" == "migrate" ]; then
-  if [ "${2}" == "" ]; then
-    echo "Please specify what you would like to migrate..."
-    exit
-  fi
-
-  if [ "${2}" == "scripts" ]; then
-    echo "Migrating scripts..."
-    bash "${UNIXSCRIPTS}/migrations/migrate_scripts.sh"
-    exit
-  fi
-
-  if [ "${2}" == "supervisor" ]; then
-    echo "Migrating supervisor.conf file..."
-    bash "${UNIXSCRIPTS}/migrations/migrate_supervisor_conf.sh"
-    exit
-  fi
-
-fi
-
-
-
-# ------------------------------------------------------------------------------------------------------> daphne rebuild
-if [ "${1}" == "rebuild" ]; then
-  if [ "${2}" == "" ]; then
-    echo "Please specify which service you would like to rebuild..."
-    exit
-  fi
-
-  if [ "${2}" == "vassar" ]; then
-    echo "Rebuilding vassar..."
-    if [ "${3}" == "-c" ]; then
-      bash "${UNIXSCRIPTS}/clear_coverage_database.sh"
-    fi
-    bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/build_vassar.sh"
-    exit
-  fi
-
-  if [ "${2}" == "datamining" ]; then
-    echo "Rebuilding datamining..."
+  if [ "${2}" == "build" ]; then # -----------------------------------------------------------------------------------> build
+    echo "Building datamining..."
     bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/build_datamining.sh"
     exit
   fi
 
-fi
-
-
-# --------------------------------------------------------------------------------------------------------> daphne shell
-if [ "${1}" == "shell" ]; then
-  echo "Getting daphne contianer shell"
-  docker exec -it daphne_server bash
+  echo "Please enter a valid daphne datamining command"
+  echo "daphne datamining (start / stop / restart / build)"
   exit
 fi
+
+#########################################################################################################################################
+# --------------------------------------------------------------------------------------------------------------------> daphne all
+if [ "${1}" == "all" ]; then
+  if [ "${2}" == "start" ]; then # -----------------------------------------------------------------------------------> start
+    echo "Starting all daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+    exit
+  fi
+  if [ "${2}" == "stop" ]; then # ------------------------------------------------------------------------------------> stop
+    echo "Stopping all daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+    exit
+  fi
+  if [ "${2}" == "restart" ]; then # ---------------------------------------------------------------------------------> restart
+    echo "Stopping all daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "stop_services.sh"
+    echo "Starting all daphne services..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
+    exit
+  fi
+
+  echo "Please enter a valid command for daphne all..."
+  echo "daphne all (start / stop / restart)"
+  exit
+fi
+
+
+
+echo "Command not recognized..."
+echo "daphne (up / down / shell / prod / supervisor / interface / brain / vassar / datamining / all)"
+exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

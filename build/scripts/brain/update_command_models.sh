@@ -40,8 +40,4 @@ else
     mv ./models ../daphne_brain/dialogue
 fi
 
-
-# ----------> Stop vassar
-supervisorctl stop vassar
-
 exit
