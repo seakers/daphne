@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Stop VASSAR if running on supervisorctl
-supervisorctl stop vassar
+# Stop VASSAR
+bash /app/scripts/vassar/stop_vassar.sh
 
 # Clear gradle caches
 rm -rf $HOME/.gradle/caches/
@@ -36,9 +36,3 @@ gradle publishToMavenLocal
 echo "-----> Building VASSAR_server"
 cd /app/daphne/VASSAR_server || exit
 gradle build
-
-
-
-
-# Start VASSAR with supervisorctl
-supervisorctl start vassar

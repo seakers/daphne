@@ -11,18 +11,15 @@ CODEDIR="${ROOTDIR}/daphne"     # /daphne/daphne
 
 
 
-########################################## From
+########################################## Jars
 JESS="${JARSDIR}/jess.jar"               # /daphne/build/jars/jess.jar
-IFEED="${JARSDIR}/ifeed-data-mining.jar" # /daphne/build/jars/ifeed-data-mining.jar
 ##########################################
 
 
-##################################### To
+##################################### Target
 JAVALIBS="${CODEDIR}/java_libs"     # /daphne/daphne/java_libs
-DATAMINING="${CODEDIR}/data-mining" # /daphne/daphne/data-mining
 #####################################
 
 
 # ----------> Insert
 cp "$JESS" "$JAVALIBS"
-cp "$IFEED" "$DATAMINING"

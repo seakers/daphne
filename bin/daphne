@@ -222,11 +222,17 @@ if [ "${1}" == "rebuild" ]; then
   fi
 
   if [ "${2}" == "vassar" ]; then
-    echo "Rebuilding Vassar..."
+    echo "Rebuilding vassar..."
     if [ "${3}" == "-c" ]; then
       bash "${UNIXSCRIPTS}/clear_coverage_database.sh"
     fi
     bash "${UNIXSCRIPTS}/run_container_script.sh" "vassar/build_vassar.sh"
+    exit
+  fi
+
+  if [ "${2}" == "datamining" ]; then
+    echo "Rebuilding datamining..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "datamining/build_datamining.sh"
     exit
   fi
 

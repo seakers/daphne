@@ -21,23 +21,34 @@ else
 fi
 
 
-# Perform Installation
+# ----------------------------------------------------------------------------------------------------------------> JESS
 cd $JAVALIBS || exit
 mvn install:install-file -Dfile=./jess.jar -DgroupId=gov.sandia -DartifactId=jess -Dversion=7.1p2 -Dpackaging=jar
-cd ../SystemArchitectureProblems || exit
-mvn install
-cd ../orekit/orekit || exit
-mvn install
 
-# VASSAR
-cd ../../VASSAR_lib || exit
-JAVA_LIBS=../java_libs gradle jar
-cp build/libs/vassar-1.0.jar ../java_libs/vassar.jar
-gradle publishToMavenLocal
 
-cd ../daphne-interface || exit
+# --------------------------------------------------------------------------------------------------------------> VASSAR
+#cd ../SystemArchitectureProblems || exit
+#mvn install
+#cd ../orekit/orekit || exit
+#mvn install
+#cd ../../VASSAR_lib || exit
+#JAVA_LIBS=../java_libs gradle jar
+#cp build/libs/vassar-1.0.jar ../java_libs/vassar.jar
+#gradle publishToMavenLocal
+bash /app/scripts/vassar/build_vassar.sh
+
+
+# ----------------------------------------------------------------------------------------------------------> DATAMINING
+bash /app/scripts/datamining/build_datamining.sh
+
+
+# -----------------------------------------------------------------------------------------------------------> INTERFACE
+cd $DAPHNEINTERFACE || exit
 npm install
-cd ..
+
+
+# ---------------------------------------------------------------------------------------------------------------> BRAIN
+cd $DAPHNEDIR
 pip3 install -r ./daphne_brain/requirements.txt
 pip3 install -r ./command_classifier/requirements.txt
 pip3 install -r ./historical_db/requirements.txt
