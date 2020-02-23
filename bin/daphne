@@ -346,9 +346,14 @@ if [ "${1}" == "interface" ]; then
     bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/start_interface.sh"
     exit
   fi
+  if [ "${2}" == "build" ]; then # -----------------------------------------------------------------------------------> build
+    echo "Building interface..."
+    bash "${UNIXSCRIPTS}/run_container_script.sh" "interface/build_interface.sh"
+    exit
+  fi
 
   echo "Please enter a valid daphne interface command"
-  echo "daphne interface (start / stop / restart)"
+  echo "daphne interface (start / stop / restart / build)"
   exit
 fi
 

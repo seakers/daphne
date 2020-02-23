@@ -27,14 +27,6 @@ mvn install:install-file -Dfile=./jess.jar -DgroupId=gov.sandia -DartifactId=jes
 
 
 # --------------------------------------------------------------------------------------------------------------> VASSAR
-#cd ../SystemArchitectureProblems || exit
-#mvn install
-#cd ../orekit/orekit || exit
-#mvn install
-#cd ../../VASSAR_lib || exit
-#JAVA_LIBS=../java_libs gradle jar
-#cp build/libs/vassar-1.0.jar ../java_libs/vassar.jar
-#gradle publishToMavenLocal
 bash /app/scripts/vassar/build_vassar.sh
 
 
@@ -43,8 +35,7 @@ bash /app/scripts/datamining/build_datamining.sh
 
 
 # -----------------------------------------------------------------------------------------------------------> INTERFACE
-cd $DAPHNEINTERFACE || exit
-npm install
+bash /app/scripts/interface/build_interface.sh
 
 
 # ---------------------------------------------------------------------------------------------------------------> BRAIN
