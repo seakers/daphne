@@ -30,6 +30,8 @@ else
     touch ./logs/daphne.log
 fi
 
+supervisorctl start vassar
+
 # Index historian database + train models
 if [ "${1}" == "--all" ]; then
   # Index historical database
