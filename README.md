@@ -101,7 +101,7 @@ Because they are being edited by the container in real time, you will have to re
 `-- vassar.out.log
 ```
 
-## Daphne Terminal Commands
+# Daphne Terminal Commands
 
 At the end of installation, you will be asked if you want to add the "daphne" executable to your PATH environment variable.
 If you opt to, then you will have some useful Daphne commands at your disposal.
@@ -114,57 +114,93 @@ Note: after the installer edits either your .bashrc or .bash_profile, you will h
 <br>
 
 
-### `daphne up`
-
-This command starts all of Daphne's containers and starts all of Daphne's services
-
-<br>
-
-### `daphne down`
-
-This command will stop all of Daphne's running services and remove all of Daphne's docker containers.
-The `daphne up` command will have to be ran after this to re-start Daphne
-
-<br>
-
-### `daphne start (service)`
-
-This command will start a daphne service if it is stopped.
-
-Your options for `(service)` are: `interface`, `brain`, `vassar`, `datamining`, or `all`
-
-Ex `daphne start all`
-
-If you would like to migrate the daphne_brain database when running the brain `daphne start brain`, add the -m 
-flag at the end `daphne start brain -m`
-
-<br>
 
 
-### `daphne restart (service)`
+## Container Commands
 
-This command will restart a daphne service if it is running.
+`daphne up` - Starts all Daphne containers and runs all services
 
-Your options for `(service)` are: `interface`, `brain`, `vassar`, `datamining`, or `all`
+`daphne down` - Stops all Daphne containers, commits container changes to local image, and removes containers
 
-Ex `daphne restart vassar`
+`daphne shell` - Returns a shell inside the docker container
 
-If you would like to migrate the daphne_brain database when restarting the brain `daphne restart brain`, add the -m 
-flag at the end `daphne restart brain -m`
+`daphne status` - Prints out the running status, pid, and runtime for each daphne service
 
-<br>
+`daphne prod build` - Builds and compiles Daphne services for production on a server
 
-### `daphne stop (service)`
-
-This command will stop a daphne service if it is running.
-
-Your options for `(service)` are: `interface`, `brain`, `vassar`, `datamining`, or `all`
-
-Ex `daphne stop datamining`
+`daphne image rebuild` - Completely rebuild daphne image (use when new updates come out!)
 
 
+## Service Commands
+
+Service commands are in the form `daphne (service) (command)` <br>
+
+Here is a list of all Daphne's services
+ - interface
+ - brain
+ - vassar
+ - datamining
+ 
+ 
+See below for specific service commands
+
+### Interface (front-end)
+
+`daphne interface start` - starts hosting daphne interface on port 8080
+
+`daphne interface stop` - stops hosting daphne interface
+
+`daphne interface restart` - restarts daphne interface
+
+`daphne interface build` - reinstall all daphne interface dependencies 
 
 
+### Brain
+
+`daphne brain start` - runs daphne brain on port 8000
+
+`daphne brain stop` - stops daphne brain process
+
+`daphne brain restart` - restarts daphne brain (use to reflect any code changes)
+
+`daphne brain index_historian_database` - runs web scraper to fill historian database
+
+`daphne brain migrate` - migrates django models (use if you edit any model files)
+
+`daphne brain train` - trains daphne brain question models
+
+
+### Vassar
+
+`daphne vassar start` - runs vassar on port 9090
+
+`daphne vassar stop` - stops vassar process
+
+`daphne vassar restart` - restarts vassar
+
+`daphne vassar build` - builds vassar completely from scratch (use to reflect coding changes)
+
+`daphne vassar clean` - removes processed orbit information in orekit repository
+
+
+### Datamining
+
+`daphne datamining start` - runs datamining on port 9191
+
+`daphne datamining stop` - stops datamining process
+
+`daphne datamining restart` - restarts datamining
+
+`daphne datamining build` - build datamining completely from scratch (use to reflect coding changes)
+
+
+### All
+
+`daphne all start` - starts all daphne services
+
+`daphne all stop` - stops all daphne services
+
+`daphne all restart` - restarts all daphne services
 
 
 

@@ -72,7 +72,7 @@ def train_cnn(x_text, y, daphne_version, output_dir, label):
 # Data Preparation
 # ==================================================
 if __name__ == '__main__':
-    daphne_versions = [os.environ['DAPHNEVERSION']]  # "EDL", "AT"
+    daphne_versions = ["EOSS"]  # "EDL", "AT"
     for daphne_version in daphne_versions:
         # Load data
         print("Loading data...")

@@ -69,7 +69,7 @@ else
     cd "$CODEDIR" || exit
 fi
 
-# $SYSARCHPROBLEMS
+# $SYSARCHPROBLEMS master
 if [ -d "$SYSARCHPROBLEMS" ]; then
     echo "SystemArchitectureProblems exists"
 else
@@ -77,7 +77,7 @@ else
     git clone https://github.com/seakers/SystemArchitectureProblems.git
 fi
 
-# $OREKIT
+# $OREKIT master
 if [ -d "$OREKIT" ]; then
     echo "orekit exists"
 else
@@ -85,7 +85,7 @@ else
     git clone https://github.com/seakers/orekit.git
 fi
 
-# $VASSARRESOURCES
+# $VASSARRESOURCES master
 if [ -d "$VASSARRESOURCES" ]; then
     echo "VASSAR_resources exists"
 else
@@ -93,7 +93,7 @@ else
     git clone https://github.com/seakers/VASSAR_resources.git
 fi
 
-# $DAPHNEBRAIN
+# $DAPHNEBRAIN master
 if [ -d "$DAPHNEBRAIN" ]; then
     echo "daphne_brain exists"
 else
@@ -101,7 +101,7 @@ else
     git clone https://github.com/seakers/daphne_brain.git
 fi
 
-# $COMMANDCLASSIFIER
+# $COMMANDCLASSIFIER master
 if [ -d "$COMMANDCLASSIFIER" ]; then
     echo "command_classifier exists"
 else
@@ -109,7 +109,7 @@ else
     git clone https://github.com/seakers/command_classifier.git
 fi
 
-# $HISTORICALDB
+# $HISTORICALDB master
 if [ -d "$HISTORICALDB" ]; then
     echo "historical_db exists"
 else
@@ -117,7 +117,7 @@ else
     git clone https://github.com/seakers/historical_db.git
 fi
 
-# $DATAMINING
+# $DATAMINING master
 if [ -d "$DATAMINING" ]; then
     echo "data-mining exists"
 else
@@ -125,7 +125,7 @@ else
     git clone https://github.com/seakers/data-mining.git
 fi
 
-# mopAOS
+# mopAOS develop
 if [ -d "$MOPAOS" ]; then
     echo "VASSAR_server exists"
 else
@@ -138,7 +138,7 @@ else
     cd "$CODEDIR" || exit
 fi
 
-# $DAPHNEINTERFACE
+# $DAPHNEINTERFACE master
 if [ -d "$DAPHNEINTERFACE" ]; then
     echo "daphne-interface exists"
 else
@@ -146,7 +146,7 @@ else
     git clone https://github.com/seakers/daphne-interface.git
 fi
 
-# $JAVALIBS
+# $JAVALIBS master
 if [ -d "$JAVALIBS" ]; then
     echo "java_libs exists"
 else

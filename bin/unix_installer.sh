@@ -24,7 +24,7 @@ JAVALIBS="${CODEDIR}/java_libs"                         # /daphne/daphne/java_li
 
 
 # ----------> Create logs
-bash "${UNIXSCRIPTS}/create_logs.sh" "${ROOTDIR}"
+bash "${UNIXSCRIPTS}/create_dirs.sh" "${ROOTDIR}"
 
 # ----------> Download tools
 bash "${UNIXSCRIPTS}/download_tools.sh"
@@ -38,8 +38,8 @@ bash "${UNIXSCRIPTS}/insert_libs.sh"
 # ----------> Replace jars
 bash "${UNIXSCRIPTS}/insert_jars.sh"
 
-# ----------> Build containers
-bash "${UNIXSCRIPTS}/build_containers.sh"
+# ----------> Build images
+bash "${UNIXSCRIPTS}/build_images.sh"
 
 # ----------> Run containers
 bash "${UNIXSCRIPTS}/run_containers.sh"
