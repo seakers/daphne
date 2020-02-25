@@ -4,3 +4,4 @@
 /build/tools/openjdk-12+32_linux-x64_bin.tar.gz
 .idea
 .env
+.vscode
