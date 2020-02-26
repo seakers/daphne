@@ -5,7 +5,7 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT") # /daphne/bin/unix_scripts
 ROOTDIR=${SCRIPTPATH::-17}      # /daphne
 LIBSDIR="${ROOTDIR}/build/libs" # /daphne/build/libs
-CODEDIR="${ROOTDIR}/daphne"     # /daphne/daphne
+CODEDIR="${ROOTDIR}/codebase"   # /daphne/codebase
 #################################
 
 ################################################################ From
@@ -14,8 +14,8 @@ CLASSIFIERTRAIN="${LIBSDIR}/train.py"                          # /daphne/build/l
 ################################################################
 
 ##################################################################### To
-WEBPACKSETTINGSTO="${CODEDIR}/daphne-interface/webpack.dev.js"      # /daphne/daphne/daphne-interface/webpack.dev.js
-CLASSIFIERTRAINTO="${CODEDIR}/command_classifier/train.py"          # /daphne/daphne/command_classifier/train.py
+WEBPACKSETTINGSTO="${CODEDIR}/daphne-interface/webpack.dev.js"      # /daphne/codebase/daphne-interface/webpack.dev.js
+CLASSIFIERTRAINTO="${CODEDIR}/command_classifier/train.py"          # /daphne/codebase/command_classifier/train.py
 #####################################################################
 
 # ----------> Insert

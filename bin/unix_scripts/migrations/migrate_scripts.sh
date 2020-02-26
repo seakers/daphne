@@ -7,7 +7,7 @@ ROOTDIR=${SCRIPTPATH::-28}           # /daphne
 BUILDDIR="${ROOTDIR}/build"          # /daphne/build
 LIBSDIR="${ROOTDIR}/build/libs"      # /daphne/build/libs
 SCRIPSDIR="${ROOTDIR}/build/scripts" # /daphne/build/scripts
-CODEDIR="${ROOTDIR}/daphne"          # /daphne/daphne
+CODEDIR="${ROOTDIR}/codebase"          # /daphne/daphne
 ######################################
 
 

@@ -30,18 +30,3 @@ else
     echo "ROOT_DIR=${ROOTDIR}" > "${ENVFILE}"
 fi
 
-## Database directory
-#if [ -d "$DATABASES_DIR" ]; then
-#  echo "Database directory exists..."
-#else
-#  echo "Creating database directory"
-#  mkdir "$DATABASES_DIR"
-#fi
-#
-## Postgres directory
-#if [ -d "$POSTGRES_DIR" ]; then
-#  echo "Postgres directory exists..."
-#else
-#  echo "Creating postgres directory"
-#  mkdir "$POSTGRES_DIR"
-#fi

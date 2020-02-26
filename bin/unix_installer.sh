@@ -7,18 +7,18 @@ SCRIPTPATH=$(dirname "$SCRIPT")                         # /daphne/bin
 UNIXSCRIPTS="${SCRIPTPATH}/unix_scripts"                # /daphne/bin/unix_scripts
 ROOTDIR=${SCRIPTPATH::-4}                               # /daphne
 BUILDDIR="${ROOTDIR}/build"                             # /daphne/build
-CODEDIR="${ROOTDIR}/daphne"                             # /daphne/daphne
-VASSARSERVER="${CODEDIR}/VASSAR_server"                 # /daphne/daphne/VASSAR_server
-VASSARLIB="${CODEDIR}/VASSAR_lib"                       # /daphne/daphne/VASSAR_lib
-SYSARCHPROBLEMS="${CODEDIR}/SystemArchitectureProblems" # /daphne/daphne/SystemArchitectureProblems
-OREKIT="${CODEDIR}/orekit"                              # /daphne/daphne/orekit
-VASSARRESOURCES="${CODEDIR}/VASSAR_resources"           # /daphne/daphne/VASSAR_resources
-DAPHNEBRAIN="${CODEDIR}/daphne_brain"                   # /daphne/daphne/daphne_brain
-COMMANDCLASSIFIER="${CODEDIR}/command_classifier"       # /daphne/daphne/command_classifier
-HISTORICALDB="${CODEDIR}/historical_db"                 # /daphne/daphne/historical_db
-DATAMINING="${CODEDIR}/data-mining"                     # /daphne/daphne/data-mining
-DAPHNEINTERFACE="${CODEDIR}/daphne-interface"           # /daphne/daphne/daphne-interface
-JAVALIBS="${CODEDIR}/java_libs"                         # /daphne/daphne/java_libs
+CODEDIR="${ROOTDIR}/codebase"                           # /daphne/codebase
+VASSARSERVER="${CODEDIR}/VASSAR_server"                 # /daphne/codebase/VASSAR_server
+VASSARLIB="${CODEDIR}/VASSAR_lib"                       # /daphne/codebase/VASSAR_lib
+SYSARCHPROBLEMS="${CODEDIR}/SystemArchitectureProblems" # /daphne/codebase/SystemArchitectureProblems
+OREKIT="${CODEDIR}/orekit"                              # /daphne/codebase/orekit
+VASSARRESOURCES="${CODEDIR}/VASSAR_resources"           # /daphne/codebase/VASSAR_resources
+DAPHNEBRAIN="${CODEDIR}/daphne_brain"                   # /daphne/codebase/daphne_brain
+COMMANDCLASSIFIER="${CODEDIR}/command_classifier"       # /daphne/codebase/command_classifier
+HISTORICALDB="${CODEDIR}/historical_db"                 # /daphne/codebase/historical_db
+DATAMINING="${CODEDIR}/data-mining"                     # /daphne/codebase/data-mining
+DAPHNEINTERFACE="${CODEDIR}/daphne-interface"           # /daphne/codebase/daphne-interface
+JAVALIBS="${CODEDIR}/java_libs"                         # /daphne/codebase/java_libs
 #########################################################
 
 
@@ -35,8 +35,8 @@ bash "${UNIXSCRIPTS}/clone_repositories.sh"
 # ----------> Replace libs
 bash "${UNIXSCRIPTS}/insert_libs.sh"
 
-# ----------> Replace jars
-bash "${UNIXSCRIPTS}/insert_jars.sh"
+# ----------> Replace jars: will now be in /daphne/codebase/java_libs by default
+# bash "${UNIXSCRIPTS}/insert_jars.sh"
 
 # ----------> Build images
 bash "${UNIXSCRIPTS}/build_images.sh"
