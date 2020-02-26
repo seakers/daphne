@@ -29,3 +29,6 @@
 [submodule "codebase/SystemArchitectureProblems"]
 	path = codebase/SystemArchitectureProblems
 	url = https://github.com/seakers/SystemArchitectureProblems.git
+[submodule "codebase/data-mining"]
+	path = codebase/data-mining
+	url = https://github.com/seakers/data-mining.git
