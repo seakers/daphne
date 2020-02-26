@@ -26,3 +26,6 @@
 	path = codebase/mopAOS
 	url = https://github.com/seakers/mopAOS.git
 	branch = develop
+[submodule "codebase/SystemArchitectureProblems"]
+	path = codebase/SystemArchitectureProblems
+	url = https://github.com/seakers/SystemArchitectureProblems.git
