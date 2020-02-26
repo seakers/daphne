@@ -7,7 +7,7 @@ services:
     image: daphne:test
     volumes:
       - type: bind
-        source: ${ROOT_DIR}/daphne
+        source: ${ROOT_DIR}/codebase
         target: /app/daphne
       - type: bind
         source: ${ROOT_DIR}/build/scripts
