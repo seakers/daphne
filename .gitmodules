@@ -22,6 +22,7 @@
 [submodule "codebase/orekit"]
 	path = codebase/orekit
 	url = https://github.com/seakers/orekit.git
+	branch = dev
 [submodule "codebase/mopAOS"]
 	path = codebase/mopAOS
 	url = https://github.com/seakers/mopAOS.git
