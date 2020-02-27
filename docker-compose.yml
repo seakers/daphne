@@ -44,3 +44,14 @@ services:
       - "5671:5671"
     hostname: "my-rabbitmq"
     container_name: daphne_rabbitmq
+  neo4j:
+    image: neo4j:3.5.14
+    ports: 
+      - "7474:7474"
+      - "7687:7687"
+    container_name: neo4j_daphne
+    volumes: 
+      - ${ROOT_DIR}/databases/neo4j/data:/data
+      - ${ROOT_DIR}/databases/neo4j/logs:/logs
+    environment: 
+      - NEO4J_AUTH=neo4j/test
