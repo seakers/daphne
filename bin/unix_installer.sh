@@ -29,11 +29,14 @@ bash "${UNIXSCRIPTS}/create_dirs.sh" "${ROOTDIR}"
 # ----------> Download tools
 bash "${UNIXSCRIPTS}/download_tools.sh"
 
-# ----------> Install repos
-bash "${UNIXSCRIPTS}/clone_repositories.sh"
+# ----------> Skip if updating
+if [ "${1}" != "--update" ]; then 
+    # ----------> Install repos
+    bash "${UNIXSCRIPTS}/clone_repositories.sh"
 
-# ----------> Replace libs
-bash "${UNIXSCRIPTS}/insert_libs.sh"
+    # ----------> Replace libs
+    bash "${UNIXSCRIPTS}/insert_libs.sh"
+fi
 
 # ----------> Replace jars: will now be in /daphne/codebase/java_libs by default
 # bash "${UNIXSCRIPTS}/insert_jars.sh"
@@ -57,7 +60,10 @@ bash "${UNIXSCRIPTS}/commit_container_changes.sh"
 bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
 
 # ----------> Add daphne to PATH
-bash "${UNIXSCRIPTS}/add_to_path.sh"
+if [ "${1}" != "--update" ]; then 
+    bash "${UNIXSCRIPTS}/add_to_path.sh"
+fi
+
 
 
 

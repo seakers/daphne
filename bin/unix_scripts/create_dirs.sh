@@ -22,7 +22,7 @@ mkdir "$LOGDIR"
 
 # Make a new .env file
 if [ -f $ENVFILE ]; then
-   echo "File $ENVFILE exists."
+   echo "File $ENVFILE exists, not creating one..."
 else
     echo "File $ENVFILE does not exist. Creating one..."
     cd ${ROOTDIR} || exit
