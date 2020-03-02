@@ -36,7 +36,7 @@ fi
 
 
 # ---------------------------------------------------- Clone submodules
-cd ROOTDIR || exit
+cd $ROOTDIR || exit
 git submodule init
 git submodule update
 
