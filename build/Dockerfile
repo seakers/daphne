@@ -18,6 +18,11 @@ ENV RABBITMQ_HOST=rabbitmq
 ENV POSTGRES_HOST=postgres
 ENV POSTGRES_PORT=5432
 
+ENV NEO4J_HOST=neo4j
+ENV NEO4J_PORT=7687
+ENV NEO4J_USER=neo4j
+ENV NEO4J_PASSWORD=test
+
 # ---------- INSTALL TOOLS ----------
 WORKDIR /installs
 COPY ./build/tools/openjdk-12_linux-x64_bin.tar.gz /installs

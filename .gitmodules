@@ -10,6 +10,7 @@
 [submodule "codebase/historical_db"]
 	path = codebase/historical_db
 	url = https://github.com/seakers/historical_db.git
+	branch = master_update
 [submodule "codebase/VASSAR_server"]
 	path = codebase/VASSAR_server
 	url = https://github.com/seakers/VASSAR_server.git
