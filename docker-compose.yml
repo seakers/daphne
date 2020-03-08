@@ -55,3 +55,11 @@ services:
       - ${ROOT_DIR}/databases/neo4j/logs:/logs
     environment: 
       - NEO4J_AUTH=neo4j/test
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "5555:80"
+    container_name: pgadmin_daphne
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=daphne
+      - PGADMIN_DEFAULT_PASSWORD=daphne
