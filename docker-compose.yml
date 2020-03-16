@@ -49,7 +49,7 @@ services:
     ports: 
       - "7474:7474"
       - "7687:7687"
-    container_name: neo4j_daphne
+    container_name: daphne_neo4j
     volumes: 
       - ${ROOT_DIR}/databases/neo4j/data:/data
       - ${ROOT_DIR}/databases/neo4j/logs:/logs
@@ -59,7 +59,7 @@ services:
     image: dpage/pgadmin4
     ports:
       - "5555:80"
-    container_name: pgadmin_daphne
+    container_name: daphne_pgadmin
     environment: 
       - PGADMIN_DEFAULT_EMAIL=daphne
       - PGADMIN_DEFAULT_PASSWORD=daphne
