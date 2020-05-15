@@ -26,9 +26,20 @@ mvn dependency:purge-local-repository
 mvn install
 
 
+
+# BUILD: schema
+echo "-----> Building schema"
+cd /app/daphne/VASSAR_lib/src/main/graphql/com/example
+apollo schema:download --endpoint=http://graphql:8080/v1/graphql --header 'X-Hasura-Admin-Secret: daphne'
+# gradle downloadApolloSchema -Pcom.apollographql.apollo.endpoint=http://graphql:8080/v1/graphql -Pcom.apollographql.apollo.schema=src/main/graphql/com/example/schema.json  "-Pcom.apollographql.apollo.headers=Authorization=Bearer daphne"
+
+
+
 # BUILD: seakers/vassar
 echo "-----> Building seakers/vassar"
 cd /app/daphne/VASSAR_lib
+gradle generateApolloSources
+# gradle build --refresh-dependencies
 gradle publishToMavenLocal
 
 
