@@ -29,10 +29,10 @@ mvn install
 # BUILD: seakers/vassar
 echo "-----> Building seakers/vassar"
 cd /app/daphne/VASSAR_lib
-gradle publishToMavenLocal
+./gradlew publishToMavenLocal
 
 
 # BUILD: VASSAR_server
 echo "-----> Building VASSAR_server"
 cd /app/daphne/VASSAR_server || exit
-gradle build
+./gradlew build

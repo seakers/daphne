@@ -19,7 +19,7 @@ mvn install
 
 # BUILD: datamining
 cd /app/daphne/data-mining
-gradle build
+./gradlew build
 
 
 

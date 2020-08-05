@@ -22,6 +22,14 @@ services:
       - postgres
     tty: true
     container_name: daphne_server
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/neo4j_daphne
+    container_name: daphne_graph
   postgres:
     image: postgres:latest
     ports:
