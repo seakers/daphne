@@ -66,7 +66,7 @@ services:
   graphql:
     image: hasura/graphql-engine
     ports:
-      - "6001:8080"
+      - "6002:8080"
     depends_on: 
       - "postgres"
     restart: always
@@ -76,3 +76,63 @@ services:
       - HASURA_GRAPHQL_ADMIN_SECRET=daphne
       - HASURA_GRAPHQL_AUTH_HOOK=http://daphne:8000/api/auth/check-status-hasura
     container_name: daphne_graphql
+  nodejs:
+    image: node:latest
+    ports:
+      - "4001:4000"
+      - "3000:3000"
+    tty: true
+    container_name: daphne_nodejs
+    volumes:
+      - type: bind
+        source: ${ROOT_DIR}/databases/apollo
+        target: /repos/apollo
+      - type: bind
+        source: ${ROOT_DIR}/databases/apollo-api
+        target: /repos/apollo-api
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "443:443"
+      - "4510-4520:4510-4520"
+      - "4566-4615:4566-4615"
+    environment:
+      - LOCALSTACK_API_KEY:3mfjxSfeMg
+      - DEFAULT_REGION=us-east-2
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOSTNAME=localhost
+      - HOSTNAME_EXTERNAL=localhost
+      - USER_SSL=true
+      - SERVICES=serverless,sqs
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - HOST_TMP_FOLDER=/tmp/localstack
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    container_name: daphne_aws_stack
+  vassar:
+    build: /home/gabe/repos/seakers/design-evaluator
+    image: vassar:alpha
+    volumes:
+      - type: bind
+        source: /home/gabe/repos/seakers/design-evaluator
+        target: /app
+    ports:
+      - "9091:9091"
+    environment:
+      - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
+      - AWS_SECRET_ACCESS_KEY=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
+      - REQUEST_MODE=CRISP-ATTRIBUTES
+      - GROUP_ID=1
+      - PROBLEM_ID=4
+      - APOLLO_URL=http://graphql:8080/v1/graphql
+      - AWS_STACK_ENDPOINT=http://localstack:4576
+      - EVAL_QUEUE_URL=http://localhost:4576/queue/vassar_queue
+      - PRIVATE_QUEUE_NAME=vassar_private_queue
+      - APOLLO_URL_WS=ws://graphql:8080/v1/graphql
+    container_name: Vassar
+    tty: true
+
+

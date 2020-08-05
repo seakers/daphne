@@ -34,3 +34,6 @@
 [submodule "codebase/data-mining"]
 	path = codebase/data-mining
 	url = https://github.com/seakers/data-mining.git
+[submodule "codebase/vassar_apollo"]
+	path = codebase/vassar_apollo
+	url = https://github.com/seakers/vassar_apollo.git
