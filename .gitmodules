@@ -1,0 +1,39 @@
+[submodule "codebase/daphne-interface"]
+	path = codebase/daphne-interface
+	url = https://github.com/seakers/daphne-interface.git
+[submodule "codebase/daphne_brain"]
+	path = codebase/daphne_brain
+	url = https://github.com/seakers/daphne_brain.git
+[submodule "codebase/command_classifier"]
+	path = codebase/command_classifier
+	url = https://github.com/seakers/command_classifier.git
+[submodule "codebase/historical_db"]
+	path = codebase/historical_db
+	url = https://github.com/seakers/historical_db.git
+	branch = master_update
+[submodule "codebase/VASSAR_server"]
+	path = codebase/VASSAR_server
+	url = https://github.com/seakers/VASSAR_server.git
+[submodule "codebase/VASSAR_lib"]
+	path = codebase/VASSAR_lib
+	url = https://github.com/seakers/VASSAR_lib.git
+[submodule "codebase/VASSAR_resources"]
+	path = codebase/VASSAR_resources
+	url = https://github.com/seakers/VASSAR_resources.git
+[submodule "codebase/orekit"]
+	path = codebase/orekit
+	url = https://github.com/seakers/orekit.git
+	branch = dev
+[submodule "codebase/mopAOS"]
+	path = codebase/mopAOS
+	url = https://github.com/seakers/mopAOS.git
+	branch = develop
+[submodule "codebase/SystemArchitectureProblems"]
+	path = codebase/SystemArchitectureProblems
+	url = https://github.com/seakers/SystemArchitectureProblems.git
+[submodule "codebase/data-mining"]
+	path = codebase/data-mining
+	url = https://github.com/seakers/data-mining.git
+[submodule "codebase/vassar_apollo"]
+	path = codebase/vassar_apollo
+	url = https://github.com/seakers/vassar_apollo.git
