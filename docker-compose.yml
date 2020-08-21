@@ -121,11 +121,11 @@ services:
         target: /var/run/docker.sock
     container_name: daphne_aws_stack
   vassar:
-    build: /home/gabe/repos/seakers/design-evaluator
+    build: /home/antoni/repos/design-evaluator
     image: vassar:alpha
     volumes:
       - type: bind
-        source: /home/gabe/repos/seakers/design-evaluator
+        source: /home/antoni/repos/design-evaluator
         target: /app
     ports:
       - "9091:9091"

@@ -25,10 +25,6 @@ ENV NEO4J_PASSWORD=test
 
 # ---------- INSTALL TOOLS ----------
 WORKDIR /installs
-COPY ./build/tools/openjdk-12_linux-x64_bin.tar.gz /installs
-COPY ./build/tools/apache-maven-3.6.3-bin.tar.gz   /installs
-COPY ./build/tools/gradle-6.0-bin.zip              /installs
-COPY ./build/tools/node-v12.13.1-linux-x64.tar.xz  /installs
 RUN apt-get update -y
 RUN apt-get install apt-utils -y
 RUN apt-get upgrade -y                       && \
@@ -37,16 +33,6 @@ RUN apt-get upgrade -y                       && \
     apt-get install maven -y
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y nodejs
-
-ENV JAVA_HOME="/installs/jdk-12"
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
-
-ENV PATH="/installs/apache-maven-3.6.3/bin:${PATH}"
-ENV PATH="/installs/gradle-6.0/bin:${PATH}"
-ENV PATH="/installs/node-v12.13.1-linux-x64/bin:${PATH}"
-RUN mkdir ~/.npm-global && \
-    npm config set prefix '~/.npm-global'
-ENV PATH="~/.npm-global/bin:${PATH}"
 
 # ---------- DAPHNE ----------
 WORKDIR /app/scripts
