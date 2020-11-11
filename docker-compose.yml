@@ -75,6 +75,7 @@ services:
       - HASURA_GRAPHQL_ENABLE_CONSOLE=true
       - HASURA_GRAPHQL_ADMIN_SECRET=daphne
       - HASURA_GRAPHQL_AUTH_HOOK=http://daphne:8000/api/auth/check-status-hasura
+      - HASURA_GRAPHQL_LIVE_QUERIES_MULTIPLEXED_REFETCH_INTERVAL=100
     container_name: daphne_graphql
   nodejs:
     image: node:latest
@@ -134,5 +135,38 @@ services:
       - APOLLO_URL_WS=ws://graphql:8080/v1/graphql
     container_name: Vassar
     tty: true
+  add:
+    image: neo4j:latest
+    ports: 
+      - "7475:7474"
+      - "7688:7687"
+    container_name: add_database
+    volumes: 
+      - ${ROOT_DIR}/databases/neo4j_add/data:/data
+      - ${ROOT_DIR}/databases/neo4j_add/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=neo4j/test
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*
+      - NEO4J_dbms_security_procedures_whitelist=gds.*
+  add_ga:
+    build: /home/gabe/repos/seakers/decisions
+    image: add_server:beta
+    volumes:
+      - type: bind
+        source: /home/gabe/repos/seakers/decisions
+        target: /app
+    environment:
+      - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_STACK_ENDPOINT=http://localstack:4576
+      - NEO4J_URI=neo4j://add:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=test
+      - PROBLEM=ClimateCentric
+      - EVAL_QUEUE=add_queue
+      - VASSAR_QUEUE=http://localhost:4576/queue/vassar_queue
+    container_name: daphne_AddGA
+    tty: true
+
 
 

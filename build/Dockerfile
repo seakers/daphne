@@ -29,7 +29,7 @@ COPY ./build/tools/openjdk-12_linux-x64_bin.tar.gz /installs
 COPY ./build/tools/apache-maven-3.6.3-bin.tar.gz   /installs
 COPY ./build/tools/gradle-6.0-bin.zip              /installs
 COPY ./build/tools/node-v12.13.1-linux-x64.tar.xz  /installs
-RUN apt-get install apt-utils -y
+# RUN apt-get install apt-utils -y
 RUN apt-get update -y                        && \
     apt-get upgrade -y                       && \
     apt-get install lsof -y                  && \
