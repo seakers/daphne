@@ -1,9 +1,11 @@
 [submodule "codebase/daphne-interface"]
 	path = codebase/daphne-interface
 	url = https://github.com/seakers/daphne-interface.git
+  branch = adds
 [submodule "codebase/daphne_brain"]
 	path = codebase/daphne_brain
 	url = https://github.com/seakers/daphne_brain.git
+  branch = sqs-port-mycroft
 [submodule "codebase/command_classifier"]
 	path = codebase/command_classifier
 	url = https://github.com/seakers/command_classifier.git
@@ -20,10 +22,11 @@
 [submodule "codebase/VASSAR_resources"]
 	path = codebase/VASSAR_resources
 	url = https://github.com/seakers/VASSAR_resources.git
+  branch = vassar_database
 [submodule "codebase/orekit"]
 	path = codebase/orekit
 	url = https://github.com/seakers/orekit.git
-	branch = dev
+	branch = fov_changes
 [submodule "codebase/mopAOS"]
 	path = codebase/mopAOS
 	url = https://github.com/seakers/mopAOS.git
@@ -34,6 +37,3 @@
 [submodule "codebase/data-mining"]
 	path = codebase/data-mining
 	url = https://github.com/seakers/data-mining.git
-[submodule "codebase/vassar_apollo"]
-	path = codebase/vassar_apollo
-	url = https://github.com/seakers/vassar_apollo.git

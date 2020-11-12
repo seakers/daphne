@@ -18,7 +18,7 @@ mvn install:install-file -Dfile=./jess.jar -DgroupId=gov.sandia -DartifactId=jes
 
 
 # --------------------------------------------------------------------------------------------------------------> VASSAR
-bash /app/scripts/vassar/build_vassar.sh
+# bash /app/scripts/vassar/build_vassar.sh
 
 
 # ----------------------------------------------------------------------------------------------------------> DATAMINING
