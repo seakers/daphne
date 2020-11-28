@@ -114,11 +114,11 @@ services:
         target: /var/run/docker.sock
     container_name: daphne_aws_stack
   vassar:
-    build: /home/gabe/repos/seakers/design-evaluator
+    build: ${ROOT_DIR}/codebase/design-evaluator
     image: vassar:alpha
     volumes:
       - type: bind
-        source: /home/gabe/repos/seakers/design-evaluator
+        source: ${ROOT_DIR}/codebase/design-evaluator
         target: /app
     ports:
       - "9091:9091"
@@ -149,11 +149,11 @@ services:
       - NEO4J_dbms_security_procedures_unrestricted=gds.*
       - NEO4J_dbms_security_procedures_whitelist=gds.*
   add_ga:
-    build: /home/gabe/repos/seakers/decisions
+    build: ${ROOT_DIR}/codebase/decisions
     image: add_server:beta
     volumes:
       - type: bind
-        source: /home/gabe/repos/seakers/decisions
+        source: ${ROOT_DIR}/codebase/decisions
         target: /app
     environment:
       - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ

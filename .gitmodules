@@ -40,3 +40,6 @@
 [submodule "codebase/design-evaluator"]
 	path = codebase/design-evaluator
 	url = https://github.com/seakers/design-evaluator.git
+[submodule "codebase/decisions"]
+	path = codebase/decisions
+	url = https://github.com/seakers/decisions.git
