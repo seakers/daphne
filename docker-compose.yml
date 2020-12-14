@@ -64,7 +64,7 @@ services:
       - PGADMIN_DEFAULT_EMAIL=daphne
       - PGADMIN_DEFAULT_PASSWORD=daphne
   graphql:
-    image: hasura/graphql-engine
+    image: hasura/graphql-engine:latest
     ports:
       - "6002:8080"
     depends_on: 
@@ -92,7 +92,7 @@ services:
         source: ${ROOT_DIR}/databases/apollo-api
         target: /repos/apollo-api
   localstack:
-    image: localstack/localstack
+    image: apazagab/localstack
     ports:
       - "443:443"
       - "4510-4520:4510-4520"

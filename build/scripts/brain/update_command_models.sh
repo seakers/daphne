@@ -12,7 +12,7 @@ else
 fi
 
 # ----------> Start vassar
-supervisorctl start vassar
+# supervisorctl start vassar
 
 # ----------> Generate questions
 if python3 question_generator.py; then
