@@ -37,3 +37,6 @@
 [submodule "codebase/data-mining"]
 	path = codebase/data-mining
 	url = https://github.com/seakers/data-mining.git
+[submodule "codebase/design-evaluator"]
+	path = codebase/design-evaluator
+	url = https://github.com/seakers/design-evaluator.git
