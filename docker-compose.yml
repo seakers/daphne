@@ -55,14 +55,6 @@ services:
       - ${ROOT_DIR}/databases/neo4j/logs:/logs
     environment: 
       - NEO4J_AUTH=neo4j/test
-  pgadmin:
-    image: dpage/pgadmin4
-    ports:
-      - "6000:80"
-    container_name: daphne_pgadmin
-    environment: 
-      - PGADMIN_DEFAULT_EMAIL=daphne
-      - PGADMIN_DEFAULT_PASSWORD=daphne
   graphql:
     image: hasura/graphql-engine:latest
     ports:
