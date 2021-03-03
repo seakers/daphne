@@ -18,7 +18,7 @@ mvn install:install-file -Dfile=./jess.jar -DgroupId=gov.sandia -DartifactId=jes
 
 
 # --------------------------------------------------------------------------------------------------------------> VASSAR
-bash /app/scripts/vassar/build_vassar.sh
+bash /app/scripts/vassar/build_vassar.sh --all
 
 
 # ----------------------------------------------------------------------------------------------------------> DATAMINING
@@ -32,31 +32,4 @@ bash /app/scripts/interface/build_interface.sh
 # ---------------------------------------------------------------------------------------------------------------> BRAIN
 bash /app/scripts/brain/build_brain.sh --all
 
-
-
-
-
-
-
-
 exit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -33,6 +33,7 @@ RUN apt-get upgrade -y                       && \
     apt-get install maven -y
 RUN curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y nodejs
+RUN npm install -g apollo
 
 # ---------- DAPHNE ----------
 WORKDIR /app/scripts

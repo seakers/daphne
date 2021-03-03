@@ -22,14 +22,6 @@ services:
       - postgres
     tty: true
     container_name: daphne_server
-  neo4j:
-    image: neo4j:latest
-    ports:
-      - "7474:7474"
-      - "7687:7687"
-    environment:
-      - NEO4J_AUTH=neo4j/neo4j_daphne
-    container_name: daphne_graph
   postgres:
     image: postgres:latest
     ports:
@@ -53,7 +45,7 @@ services:
     hostname: "my-rabbitmq"
     container_name: daphne_rabbitmq
   neo4j:
-    image: neo4j:3.5.14
+    image: neo4j:4.1
     ports: 
       - "7474:7474"
       - "7687:7687"
@@ -66,7 +58,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     ports:
-      - "6000:80"
+      - "6101:80"
     container_name: daphne_pgadmin
     environment: 
       - PGADMIN_DEFAULT_EMAIL=daphne
@@ -74,7 +66,7 @@ services:
   graphql:
     image: hasura/graphql-engine
     ports:
-      - "6002:8080"
+      - "6100:8080"
     depends_on: 
       - "postgres"
     restart: always
@@ -99,7 +91,7 @@ services:
         source: ${ROOT_DIR}/databases/apollo-api
         target: /repos/apollo-api
   localstack:
-    image: localstack/localstack
+    image: apazagab/localstack:latest
     ports:
       - "443:443"
       - "4510-4520:4510-4520"
@@ -134,13 +126,14 @@ services:
       - AWS_SECRET_ACCESS_KEY=Pgd2nnD9wAZOCLA5SchYf1REzdYdJvDBpMEEEybU
       - REQUEST_MODE=CRISP-ATTRIBUTES
       - GROUP_ID=1
-      - PROBLEM_ID=4
+      - PROBLEM_ID=5
       - APOLLO_URL=http://graphql:8080/v1/graphql
       - AWS_STACK_ENDPOINT=http://localstack:4576
       - EVAL_QUEUE_URL=http://localhost:4576/queue/vassar_queue
       - PRIVATE_QUEUE_NAME=vassar_private_queue
       - APOLLO_URL_WS=ws://graphql:8080/v1/graphql
     container_name: Vassar
+    working_dir: /app
     tty: true
 
 
