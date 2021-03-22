@@ -39,12 +39,12 @@ mvn install
 # BUILD: seakers/vassar
 echo "-----> Building seakers/vassar"
 cd /app/daphne/VASSAR_lib
-gradle publishToMavenLocal
+./gradlew publishToMavenLocal
 
 
 # BUILD: datamining
 cd /app/daphne/data-mining
-gradle build
+./gradlew build
 
 
 

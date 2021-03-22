@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DAPHNEDIR="/app/daphne"
-JAVALIBS="/app/daphne/java_libs"
+JAVALIBS="/app/java_libs"
 
 # Check for daphne directory
 if [ -d "$DAPHNEDIR" ]; then
