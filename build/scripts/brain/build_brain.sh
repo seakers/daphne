@@ -14,7 +14,7 @@ pip3 install -r ${DAPHNEBRAIN}/requirements.txt
 pip3 install -r ${COMMANDCLASSIFIER}/requirements.txt
 pip3 install -r ${HISTORICALDB}/requirements.txt
 pip3 install -r ${VASSARDB}/requirements.txt
-python3 -m spacy download en
+python3 -m spacy download en_core_web_sm
 
 # Creating log directory
 cd ${DAPHNEBRAIN} || exit
