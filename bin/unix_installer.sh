@@ -26,9 +26,6 @@ JAVALIBS="${CODEDIR}/java_libs"                         # /daphne/codebase/java_
 # ----------> Create logs
 bash "${UNIXSCRIPTS}/create_dirs.sh" "${ROOTDIR}"
 
-# ----------> Download tools
-bash "${UNIXSCRIPTS}/download_tools.sh"
-
 # ----------> Skip if updating
 if [ "${1}" != "--update" ]; then 
     # ----------> Install repos
@@ -37,9 +34,6 @@ if [ "${1}" != "--update" ]; then
     # ----------> Replace libs
     bash "${UNIXSCRIPTS}/insert_libs.sh"
 fi
-
-# ----------> Replace jars: will now be in /daphne/codebase/java_libs by default
-# bash "${UNIXSCRIPTS}/insert_jars.sh"
 
 # ----------> Build images
 bash "${UNIXSCRIPTS}/build_images.sh"

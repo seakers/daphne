@@ -14,7 +14,7 @@ RUN git clone https://github.com/seakers/daphne_brain.git && \
     pip3 install -r ./daphne_brain/requirements.txt && \
     pip3 install -r ./command_classifier/requirements.txt && \
     pip3 install -r ./historical_db/requirements.txt && \
-    python3 -m spacy download en && \
+    python3 -m spacy download en_core_web_sm && \
     cd historical_db && \
     scrapy crawl ceosdb_scraper && \
     cd ../command_classifier && \

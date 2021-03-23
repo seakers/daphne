@@ -4,6 +4,7 @@ DAPHNEDIR="/app/daphne"
 DAPHNEBRAIN="${DAPHNEDIR}/daphne_brain"
 COMMANDCLASSIFIER="${DAPHNEDIR}/command_classifier"
 HISTORICALDB="${DAPHNEDIR}/historical_db"
+VASSARDB="${DAPHNEDIR}/VASSAR_resources/db_utility"
 DAPHNELOGDIR="${DAPHNEBRAIN}/logs"
 DAPHNELOGFILE="${DAPHNELOGDIR}/daphne.log"
 
@@ -12,7 +13,8 @@ DAPHNELOGFILE="${DAPHNELOGDIR}/daphne.log"
 pip3 install -r ${DAPHNEBRAIN}/requirements.txt
 pip3 install -r ${COMMANDCLASSIFIER}/requirements.txt
 pip3 install -r ${HISTORICALDB}/requirements.txt
-python3 -m spacy download en
+pip3 install -r ${VASSARDB}/requirements.txt
+python3 -m spacy download en_core_web_sm
 
 # Creating log directory
 cd ${DAPHNEBRAIN} || exit
@@ -46,23 +48,11 @@ fi
 # Run migrations
 bash /app/scripts/brain/migrate_database.sh
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if [ "${1}" == "--all" ]; then
+  # Index VASSAR database
+  python /app/daphne/VASSAR_resources/db_utility/index_database.py
+fi
+echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+echo "Please go to http://localhost:6002, then click on the DATA tab on top, and track all tables and foreign-key relationships. When done, press <ENTER> here."
+echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+read -n 1

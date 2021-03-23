@@ -9,15 +9,12 @@ CODEDIR="${ROOTDIR}/codebase"   # /daphne/codebase
 #################################
 
 ################################################################ From
-WEBPACKSETTINGS="${LIBSDIR}/webpack.dev.js"                    # /daphne/build/libs/webpack.dev.js
 CLASSIFIERTRAIN="${LIBSDIR}/train.py"                          # /daphne/build/libs/train.py
 ################################################################
 
 ##################################################################### To
-WEBPACKSETTINGSTO="${CODEDIR}/daphne-interface/webpack.dev.js"      # /daphne/codebase/daphne-interface/webpack.dev.js
 CLASSIFIERTRAINTO="${CODEDIR}/command_classifier/train.py"          # /daphne/codebase/command_classifier/train.py
 #####################################################################
 
 # ----------> Insert
-cp $WEBPACKSETTINGS $WEBPACKSETTINGSTO
 cp $CLASSIFIERTRAIN $CLASSIFIERTRAINTO

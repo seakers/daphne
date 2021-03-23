@@ -11,7 +11,5 @@ CODEDIR="${ROOTDIR}/codebase"   # /daphne/codebase
 
 # ----------> Compose with docker from root
 
-
-
 cd $ROOTDIR || exit
 docker-compose build

@@ -1,28 +1,31 @@
 [submodule "codebase/daphne-interface"]
 	path = codebase/daphne-interface
 	url = https://github.com/seakers/daphne-interface.git
-  branch = adds
+	branch = adds
 [submodule "codebase/daphne_brain"]
 	path = codebase/daphne_brain
 	url = https://github.com/seakers/daphne_brain.git
-  branch = sqs-port-mycroft
+	branch = sqs-port-mycroft
 [submodule "codebase/command_classifier"]
 	path = codebase/command_classifier
 	url = https://github.com/seakers/command_classifier.git
+	branch = master
 [submodule "codebase/historical_db"]
 	path = codebase/historical_db
 	url = https://github.com/seakers/historical_db.git
-	branch = master_update
+	branch = master
 [submodule "codebase/VASSAR_server"]
 	path = codebase/VASSAR_server
 	url = https://github.com/seakers/VASSAR_server.git
+	branch = master
 [submodule "codebase/VASSAR_lib"]
 	path = codebase/VASSAR_lib
 	url = https://github.com/seakers/VASSAR_lib.git
+	branch = before_db
 [submodule "codebase/VASSAR_resources"]
 	path = codebase/VASSAR_resources
 	url = https://github.com/seakers/VASSAR_resources.git
-  branch = vassar_database
+	branch = vassar_database
 [submodule "codebase/orekit"]
 	path = codebase/orekit
 	url = https://github.com/seakers/orekit.git
@@ -34,9 +37,16 @@
 [submodule "codebase/SystemArchitectureProblems"]
 	path = codebase/SystemArchitectureProblems
 	url = https://github.com/seakers/SystemArchitectureProblems.git
+	branch = master
 [submodule "codebase/data-mining"]
 	path = codebase/data-mining
 	url = https://github.com/seakers/data-mining.git
+	branch = master
 [submodule "codebase/design-evaluator"]
 	path = codebase/design-evaluator
 	url = https://github.com/seakers/design-evaluator.git
+	branch = master
+[submodule "codebase/decisions"]
+	path = codebase/decisions
+	url = https://github.com/seakers/decisions.git
+	branch = reliability
