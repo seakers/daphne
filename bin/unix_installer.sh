@@ -53,6 +53,12 @@ bash "${UNIXSCRIPTS}/commit_container_changes.sh"
 # ----------> Run services
 bash "${UNIXSCRIPTS}/run_container_script.sh" "start_services.sh"
 
+if [ "${1}" != "--update" ]; then 
+    bash "${UNIXSCRIPTS}/aws_config.sh"
+fi
+
+bash "${UNIXSCRIPTS}/aws_queues.sh"
+
 # ----------> Add daphne to PATH
 if [ "${1}" != "--update" ]; then 
     bash "${UNIXSCRIPTS}/add_to_path.sh"
