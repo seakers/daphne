@@ -56,3 +56,5 @@ echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 echo "Please go to http://localhost:6002, put 'daphne' as a password if asked, then click on the DATA tab on top, and press 'track all' for all tables and foreign-key relationships. When done, press <ENTER> here."
 echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 read -n 1
+
+mkdir /run/daphne
