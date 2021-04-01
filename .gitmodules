@@ -50,3 +50,7 @@
 	path = codebase/decisions
 	url = https://github.com/seakers/decisions.git
 	branch = reliability
+[submodule "codebase/genetic-algorithm"]
+	path = codebase/genetic-algorithm
+	url = git@github.com:seakers/genetic-algorithm.git
+	branch = master

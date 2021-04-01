@@ -119,19 +119,19 @@ services:
       - type: bind
         source: ${ROOT_DIR}/codebase/design-evaluator
         target: /app
+      - type: bind
+        source: ${ROOT_DIR}/codebase/VASSAR_resources
+        target: /resources
     ports:
       - "9091:9091"
     environment:
       - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
       - AWS_SECRET_ACCESS_KEY=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
-      - REQUEST_MODE=CRISP-ATTRIBUTES
-      - GROUP_ID=1
-      - PROBLEM_ID=4
-      - APOLLO_URL=http://graphql:8080/v1/graphql
       - AWS_STACK_ENDPOINT=http://localstack:4576
-      - EVAL_QUEUE_URL=http://localhost:4576/queue/vassar_queue
-      - PRIVATE_QUEUE_NAME=vassar_private_queue
+      - REQUEST_MODE=CRISP-ATTRIBUTES
+      - APOLLO_URL=http://graphql:8080/v1/graphql
       - APOLLO_URL_WS=ws://graphql:8080/v1/graphql
+      - EVAL_QUEUE_URL=http://localhost:4576/queue/vassar_queue
     container_name: Vassar
     tty: true
   add:

@@ -50,7 +50,7 @@ bash /app/scripts/brain/migrate_database.sh
 
 if [ "${1}" == "--all" ]; then
   # Index VASSAR database
-  python /app/daphne/VASSAR_resources/db_utility/index_database.py
+  python /app/daphne/VASSAR_resources/db_utility/index.py
 fi
 echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 echo "Please go to http://localhost:6002, put 'daphne' as a password if asked, then click on the DATA tab on top, and press 'track all' for all tables and foreign-key relationships. When done, press <ENTER> here."
