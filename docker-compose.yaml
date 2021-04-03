@@ -17,6 +17,8 @@ services:
     ports:
       - "8080:8080"
       - "8000:8000"
+    environment:
+      - EVAL_QUEUE_URL=http://localhost:4576/queue/vassar_queue
     depends_on:
       - postgres
     tty: true
