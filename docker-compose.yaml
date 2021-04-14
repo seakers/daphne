@@ -18,7 +18,8 @@ services:
       - "8080:8080"
       - "8000:8000"
     environment:
-      - EVAL_QUEUE_URL=http://localhost:4576/queue/vassar_queue
+      - VASSAR_REQUEST_URL=http://localhost:4576/queue/vassar_request
+      - VASSAR_RESPONSE_URL=http://localhost:4576/queue/vassar_response
     depends_on:
       - postgres
     tty: true
@@ -133,7 +134,8 @@ services:
       - REQUEST_MODE=CRISP-ATTRIBUTES
       - APOLLO_URL=http://graphql:8080/v1/graphql
       - APOLLO_URL_WS=ws://graphql:8080/v1/graphql
-      - EVAL_QUEUE_URL=http://localhost:4576/queue/vassar_queue
+      - VASSAR_REQUEST_URL=http://localhost:4576/queue/vassar_request
+      - VASSAR_RESPONSE_URL=http://localhost:4576/queue/vassar_response
     container_name: Vassar
     tty: true
   add:
