@@ -20,6 +20,9 @@ services:
     environment:
       - VASSAR_REQUEST_URL=http://localhost:4576/queue/vassar_request
       - VASSAR_RESPONSE_URL=http://localhost:4576/queue/vassar_response
+      - GA_REQUEST_URL=http://localhost:4576/queue/ga_request
+      - GA_RESPONSE_URL=http://localhost:4576/queue/ga_response
+      - DEPLOYMENT_TYPE=local
     depends_on:
       - postgres
     tty: true
@@ -136,7 +139,32 @@ services:
       - APOLLO_URL_WS=ws://graphql:8080/v1/graphql
       - VASSAR_REQUEST_URL=http://localhost:4576/queue/vassar_request
       - VASSAR_RESPONSE_URL=http://localhost:4576/queue/vassar_response
+      - DEPLOYMENT_TYPE=local
     container_name: Vassar
+    tty: true
+  ga:
+    build: ${ROOT_DIR}/codebase/genetic-algorithm
+    image: ga:beta
+    volumes:
+      - type: bind
+        source: ${ROOT_DIR}/codebase/genetic-algorithm
+        target: /app
+      - type: bind
+        source: ${ROOT_DIR}/codebase/VASSAR_resources
+        target: /resources
+    ports:
+      - "9092:9092"
+    environment:
+      - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_STACK_ENDPOINT=http://localstack:4576
+      - APOLLO_URL=http://graphql:8080/v1/graphql
+      - GA_REQUEST_URL=http://localhost:4576/queue/ga_request
+      - GA_RESPONSE_URL=http://localhost:4576/queue/ga_response
+      - MESSAGE_RETRIEVAL_SIZE=3
+      - MESSAGE_QUERY_TIMEOUT=5
+      - DEPLOYMENT_TYPE=local
+    container_name: genetic-algorithm
     tty: true
   add:
     image: neo4j:latest
