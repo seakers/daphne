@@ -158,6 +158,7 @@ services:
       - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
       - AWS_SECRET_ACCESS_KEY=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
       - AWS_STACK_ENDPOINT=http://localstack:4576
+      - REGION=US_EAST_2
       - APOLLO_URL=http://graphql:8080/v1/graphql
       - GA_REQUEST_URL=http://localhost:4576/queue/ga_request
       - GA_RESPONSE_URL=http://localhost:4576/queue/ga_response
