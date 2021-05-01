@@ -35,6 +35,8 @@ services:
       - POSTGRES_USER=daphne
       - POSTGRES_PASSWORD=daphne
       - POSTGRES_DB=daphne
+    volumes:
+      - ${ROOT_DIR}/databases/pgsql:/var/lib/postgresql/data
     container_name: daphne_database
   redis:
     image: redis:latest
