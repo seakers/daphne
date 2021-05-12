@@ -18,10 +18,10 @@ services:
       - "8080:8080"
       - "8000:8000"
     environment:
-      - VASSAR_REQUEST_URL=http://localhost:4576/queue/vassar_request
-      - VASSAR_RESPONSE_URL=http://localhost:4576/queue/vassar_response
-      - GA_REQUEST_URL=http://localhost:4576/queue/ga_request
-      - GA_RESPONSE_URL=http://localhost:4576/queue/ga_response
+      - VASSAR_REQUEST_URL=http://localhost:9324/000000000000/vassar_request
+      - VASSAR_RESPONSE_URL=http://localhost:9324/000000000000/vassar_response
+      - GA_REQUEST_URL=http://localhost:9324/000000000000/ga_request
+      - GA_RESPONSE_URL=http://localhost:9324/000000000000/ga_response
       - DEPLOYMENT_TYPE=local
     depends_on:
       - postgres
@@ -98,28 +98,12 @@ services:
       - type: bind
         source: ${ROOT_DIR}/databases/apollo-api
         target: /repos/apollo-api
-  localstack:
-    image: apazagab/localstack
+  mock-sqs:
+    image: softwaremill/elasticmq
     ports:
-      - "443:443"
-      - "4510-4520:4510-4520"
-      - "4566-4615:4566-4615"
-    environment:
-      - LOCALSTACK_API_KEY:3mfjxSfeMg
-      - DEFAULT_REGION=us-east-2
-      - DOCKER_HOST=unix:///var/run/docker.sock
-      - HOSTNAME=localhost
-      - HOSTNAME_EXTERNAL=localhost
-      - USER_SSL=true
-      - SERVICES=serverless,sqs
-      - DEBUG=1
-      - DATA_DIR=/tmp/localstack/data
-      - HOST_TMP_FOLDER=/tmp/localstack
-    volumes:
-      - type: bind
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
-    container_name: daphne_aws_stack
+      - "9324:9324"
+      - "9325:9325"
+    container_name: mock_sqs
   vassar:
     build: ${ROOT_DIR}/codebase/design-evaluator
     image: vassar:alpha
@@ -132,16 +116,19 @@ services:
         target: /resources
     ports:
       - "9091:9091"
+      - "10000:10000"
     environment:
       - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
       - AWS_SECRET_ACCESS_KEY=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
-      - AWS_STACK_ENDPOINT=http://localstack:4576
+      - AWS_STACK_ENDPOINT=http://mock-sqs:9324
+      - REGION=elasticmq
       - REQUEST_MODE=CRISP-ATTRIBUTES
       - APOLLO_URL=http://graphql:8080/v1/graphql
       - APOLLO_URL_WS=ws://graphql:8080/v1/graphql
-      - VASSAR_REQUEST_URL=http://localhost:4576/queue/vassar_request
-      - VASSAR_RESPONSE_URL=http://localhost:4576/queue/vassar_response
+      - VASSAR_REQUEST_URL=http://localhost:9324/000000000000/vassar_request
+      - VASSAR_RESPONSE_URL=http://localhost:9324/000000000000/vassar_response
       - DEPLOYMENT_TYPE=local
+      - JAVA_OPTS=-Dcom.sun.management.jmxremote.rmi.port=10000 -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=10000 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.local.only=false -Djava.rmi.server.hostname=localhost
     container_name: Vassar
     tty: true
   ga:
@@ -159,11 +146,11 @@ services:
     environment:
       - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
       - AWS_SECRET_ACCESS_KEY=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
-      - AWS_STACK_ENDPOINT=http://localstack:4576
-      - REGION=US_EAST_2
+      - AWS_STACK_ENDPOINT=http://mock-sqs:9324
+      - REGION=elasticmq
       - APOLLO_URL=http://graphql:8080/v1/graphql
-      - GA_REQUEST_URL=http://localhost:4576/queue/ga_request
-      - GA_RESPONSE_URL=http://localhost:4576/queue/ga_response
+      - GA_REQUEST_URL=http://localhost:9324/000000000000/ga_request
+      - GA_RESPONSE_URL=http://localhost:9324/000000000000/ga_response
       - MESSAGE_RETRIEVAL_SIZE=3
       - MESSAGE_QUERY_TIMEOUT=5
       - DEPLOYMENT_TYPE=local
@@ -192,12 +179,12 @@ services:
     environment:
       - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
       - AWS_SECRET_ACCESS_KEY=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
-      - AWS_STACK_ENDPOINT=http://localstack:4576
+      - AWS_STACK_ENDPOINT=http://mock-sqs:9324
       - NEO4J_URI=neo4j://add:7687
       - NEO4J_USER=neo4j
       - NEO4J_PASSWORD=test
       - PROBLEM=ClimateCentric
       - EVAL_QUEUE=add_queue
-      - VASSAR_QUEUE=http://localhost:4576/queue/vassar_queue
+      - VASSAR_QUEUE=http://localhost:9324/000000000000/vassar_queue
     container_name: daphne_AddGA
     tty: true
