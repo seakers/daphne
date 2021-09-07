@@ -5,7 +5,7 @@
 [submodule "codebase/daphne_brain"]
 	path = codebase/daphne_brain
 	url = https://github.com/seakers/daphne_brain.git
-	branch = sqs-port-mycroft
+	branch = deploy_aws
 [submodule "codebase/command_classifier"]
 	path = codebase/command_classifier
 	url = https://github.com/seakers/command_classifier.git
