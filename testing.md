@@ -35,6 +35,7 @@
     * What are the driving features?
 2. Activate Diversifier and test it sends suggestions
 1. Activate Suggestions and test it sends suggestions
+1. Try to clear dialogue history
 
 ## Cheatsheets
 1. Check all options from all dropdowns load correctly
@@ -56,6 +57,7 @@
 1. Try reconnecting to GA conainer
 1. Start a GA
 1. Stop a GA
+1. Check that GA is generating new architectures and sending them back to frontend
 
 ## Experiments
 
