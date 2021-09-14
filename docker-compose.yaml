@@ -68,7 +68,7 @@ services:
       - "6001:80"
     container_name: daphne_pgadmin
     environment: 
-      - PGADMIN_DEFAULT_EMAIL=daphne
+      - PGADMIN_DEFAULT_EMAIL=daphne@daphne.com
       - PGADMIN_DEFAULT_PASSWORD=daphne
   graphql:
     image: hasura/graphql-engine:latest

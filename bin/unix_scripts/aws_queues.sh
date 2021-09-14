@@ -1,3 +1,3 @@
-docker run --rm -it amazon/aws-cli --endpoint-url=http://localhost:4576 sqs create-queue --queue-name vassar_request
-docker run --rm -it amazon/aws-cli --endpoint-url=http://localhost:4576 sqs create-queue --queue-name vassar_response
-docker run --rm -it amazon/aws-cli --endpoint-url=http://localhost:4576 sqs create-queue --tags problem_id=5 --queue-name algorithm_queue
+docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli --endpoint-url=http://mock_sqs:9324 sqs create-queue --queue-name vassar_request --region us-west-2
+docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli --endpoint-url=http://mock_sqs:9324 sqs create-queue --queue-name vassar_response --region us-west-2
+docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli --endpoint-url=http://mock_sqs:9324 sqs create-queue --tags problem_id=5 --queue-name algorithm_queue --region us-west-2
