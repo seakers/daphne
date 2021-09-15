@@ -1,2 +1,2 @@
 #!/bin/bash
-supervisorctl start brain
+supervisorctl start brain:*
