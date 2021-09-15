@@ -28,7 +28,6 @@ WORKDIR /installs
 # RUN 
 RUN apt-get update -y                        && \
     apt-get upgrade -y                       && \
-    apt-get install apt-utils -y             && \
     apt-get install lsof -y                  && \
     apt-get install default-jdk -y           && \
     apt-get install maven -y
