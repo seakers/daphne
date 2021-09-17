@@ -62,6 +62,8 @@ services:
       - ${ROOT_DIR}/databases/neo4j/logs:/logs
     environment: 
       - NEO4J_AUTH=neo4j/test
+      - NEO4J_dbms_allow__upgrade=true
+      - NEO4J_dbms_allow__format__migration=true
   pgadmin:
     image: dpage/pgadmin4
     ports:
