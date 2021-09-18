@@ -11,9 +11,6 @@ else
     exit
 fi
 
-# ----------> Start vassar
-# supervisorctl start vassar
-
 # ----------> Generate questions
 if python3 question_generator.py; then
     echo "Success executing: question_generator.py"
@@ -39,9 +36,5 @@ else
     echo "Path /app/daphne/daphne_brain/dialogue/models does not exist"
     mv ./models ../daphne_brain/dialogue
 fi
-
-
-# ----------> Stop vassar
-supervisorctl stop vassar
 
 exit
