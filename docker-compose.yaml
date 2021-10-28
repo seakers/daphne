@@ -89,6 +89,9 @@ services:
       - HASURA_GRAPHQL_AUTH_HOOK=http://daphne:8001/
       - HASURA_GRAPHQL_LIVE_QUERIES_MULTIPLEXED_REFETCH_INTERVAL=100
     container_name: daphne_graphql
+    networks:
+      daphne_default:
+        ipv4_address: 172.18.0.13
   nodejs:
     image: node:latest
     ports:
@@ -109,6 +112,9 @@ services:
       - "9324:9324"
       - "9325:9325"
     container_name: mock_sqs
+    networks:
+      daphne_default:
+        ipv4_address: 172.18.0.5
   vassar:
     build: ${ROOT_DIR}/codebase/design-evaluator
     image: vassar:alpha
@@ -195,3 +201,12 @@ services:
       - VASSAR_QUEUE=http://localhost:9324/000000000000/vassar_queue
     container_name: daphne_AddGA
     tty: true
+networks:
+  daphne_default:
+    name: daphne_default
+    attachable: true
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+          gateway: 172.18.0.1
