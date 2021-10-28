@@ -91,7 +91,8 @@ services:
     container_name: daphne_graphql
     networks:
       daphne_default:
-        ipv4_address: 172.18.0.13
+      daphne_service:
+        ipv4_address: 172.12.0.13
   nodejs:
     image: node:latest
     ports:
@@ -114,7 +115,8 @@ services:
     container_name: mock_sqs
     networks:
       daphne_default:
-        ipv4_address: 172.18.0.5
+      daphne_service:
+        ipv4_address: 172.12.0.5
   vassar:
     build: ${ROOT_DIR}/codebase/design-evaluator
     image: vassar:alpha
@@ -204,9 +206,11 @@ services:
 networks:
   daphne_default:
     name: daphne_default
+  daphne_service:
+    name: daphne_service
     attachable: true
     driver: bridge
     ipam:
       config:
-        - subnet: 172.18.0.0/16
-          gateway: 172.18.0.1
+        - subnet: "172.12.0.0/16"
+          gateway: 172.12.0.1
