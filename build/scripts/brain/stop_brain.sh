@@ -1,2 +1,2 @@
 #!/bin/bash
-supervisorctl stop brain:*
+supervisorctl stop brain
