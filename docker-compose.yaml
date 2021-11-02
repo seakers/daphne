@@ -21,8 +21,8 @@ services:
     environment:
       - VASSAR_REQUEST_URL=http://localhost:9324/000000000000/vassar_request
       - VASSAR_RESPONSE_URL=http://localhost:9324/000000000000/vassar_response
-      - VASSAR_REQUEST_URL_2=https://sqs.us-east-2.amazonaws.com/923405430231/vassar_request_sensitivity
-      - VASSAR_RESPONSE_URL_2=https://sqs.us-east-2.amazonaws.com/923405430231/vassar_response_sensitivity
+      - VASSAR_REQUEST_URL_2=http://localhost:9324/000000000000/vassar_request_2
+      - VASSAR_RESPONSE_URL_2=http://localhost:9324/000000000000/vassar_response_2
       - GA_REQUEST_URL=http://localhost:9324/000000000000/ga_request
       - GA_RESPONSE_URL=http://localhost:9324/000000000000/ga_response
       - DEPLOYMENT_TYPE=local
