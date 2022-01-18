@@ -42,7 +42,7 @@ COPY ./build/jars/jess.jar /app/java_libs
 WORKDIR /app/scripts
 COPY ./build/scripts /app/scripts
 RUN chmod 0755 -R . && \
-    pip3 install supervisor
+    pip3 install supervisor gunicorn
 
 WORKDIR /etc/supervisor
 COPY ./build/tools/supervisord.conf  /etc/supervisor
