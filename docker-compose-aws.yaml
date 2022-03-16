@@ -45,10 +45,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - HASURA_GRAPHQL_DATABASE_URL=<URL>
+      - HASURA_GRAPHQL_DATABASE_URL=postgres://daphne:HNDP7m0le2z4QS1gWKh5@daphne-cluster-db.csl99y1ur3jh.us-east-2.rds.amazonaws.com:5432/daphne
       - HASURA_GRAPHQL_ENABLE_CONSOLE=true
       - HASURA_GRAPHQL_ADMIN_SECRET=daphne
-      - HASURA_GRAPHQL_AUTH_HOOK=<URL>
+      - HASURA_GRAPHQL_AUTH_HOOK=http://ec2-3-135-96-208.us-east-2.compute.amazonaws.com:8001/
       - HASURA_GRAPHQL_LIVE_QUERIES_MULTIPLEXED_REFETCH_INTERVAL=100
     container_name: daphne_graphql
     deploy:
