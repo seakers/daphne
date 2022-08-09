@@ -63,10 +63,15 @@ services:
     volumes: 
       - ${ROOT_DIR}/databases/neo4j/data:/data
       - ${ROOT_DIR}/databases/neo4j/logs:/logs
+      - ${ROOT_DIR}/databases/neo4j_add/plugins:/plugins
     environment: 
       - NEO4J_AUTH=neo4j/test
       - NEO4J_dbms_allow__upgrade=true
       - NEO4J_dbms_allow__format__migration=true
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*
+      - NEO4J_dbms_security_procedures_whitelist=gds.*
+      - NEO4JLABS_PLUGINS='["graph-data-science"]'
+      - RANDDDD=SURE
   pgadmin:
     image: dpage/pgadmin4
     ports:
@@ -171,19 +176,6 @@ services:
       - DEPLOYMENT_TYPE=local
     container_name: genetic-algorithm
     tty: true
-  add:
-    image: neo4j:latest
-    ports: 
-      - "7475:7474"
-      - "7688:7687"
-    container_name: add_database
-    volumes: 
-      - ${ROOT_DIR}/databases/neo4j_add/data:/data
-      - ${ROOT_DIR}/databases/neo4j_add/plugins:/plugins
-    environment:
-      - NEO4J_AUTH=neo4j/test
-      - NEO4J_dbms_security_procedures_unrestricted=gds.*
-      - NEO4J_dbms_security_procedures_whitelist=gds.*
   add_ga:
     build: ${ROOT_DIR}/codebase/decisions
     image: add_server:beta
@@ -195,7 +187,7 @@ services:
       - AWS_ACCESS_KEY_ID=AKIAJVM34C5MCCWRJCCQ
       - AWS_SECRET_ACCESS_KEY=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
       - AWS_STACK_ENDPOINT=http://mock-sqs:9324
-      - NEO4J_URI=neo4j://add:7687
+      - NEO4J_URI=neo4j://neo4j:7687
       - NEO4J_USER=neo4j
       - NEO4J_PASSWORD=test
       - PROBLEM=ClimateCentric

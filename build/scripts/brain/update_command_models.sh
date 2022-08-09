@@ -27,14 +27,20 @@ else
     exit
 fi
 
+
+
+
+
+
+
 # ----------> Move the model directory to brain
 if [ -d "/app/daphne/daphne_brain/dialogue/models" ]; then
     echo "Moving models"
     rm -rf /app/daphne/daphne_brain/dialogue/models
-    mv ./models ../daphne_brain/dialogue
+    mv ./overhaul/models ../daphne_brain/dialogue
 else
     echo "Path /app/daphne/daphne_brain/dialogue/models does not exist"
-    mv ./models ../daphne_brain/dialogue
+    mv ./overhaul/models ../daphne_brain/dialogue
 fi
 
 exit
